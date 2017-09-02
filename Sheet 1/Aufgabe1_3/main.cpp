@@ -32,7 +32,7 @@ int main()
 	clock_t start, stop;
 
 	start = clock();
-	cout<<StringUtil::checkUniqueness("üäabc")<<endl;
+	cout<<StringUtil::checkUniqueness("abcdefghijklmnop")<<endl;
 	stop = clock();
 	cout<<"___________________________________"<<endl;
 	cout<<(double)(stop-start)/CLOCKS_PER_SEC<<" sekunden"<<endl;
