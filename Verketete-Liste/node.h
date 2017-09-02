@@ -8,6 +8,8 @@ class Node
 		int value;
 		int pos;
 		Node *next;
+
+		void add(int);
 };
 
 #endif // NODE_H
