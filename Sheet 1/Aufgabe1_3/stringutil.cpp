@@ -17,6 +17,8 @@ bool StringUtil::checkUniqueness(string s){
 	//array an der Position des ASCII codes += 1 rechnen
 	for(int index = 0; index < sLenght; index++){
 
+		int idx = (unsigned char)s.at(index);
+		cout<< idx<<endl;
 		array[(unsigned char)s.at(index)] += 1;
 		if(array[(unsigned char)s.at((index))] > 1){
 			return false;
