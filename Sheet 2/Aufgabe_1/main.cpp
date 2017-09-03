@@ -47,11 +47,12 @@ int main()
 
 	maxTime = (endTime-startTime)*60; //Zeit in minuten
 
+	int stockprices[maxTime], *abc;
 
-	int stockprices[maxTime], abc(0);
+	abc = trader.fillTraderScale(maxTime);
 
+	Trader::calculateMaxProfit(abc,maxTime);
 
-	abc = trader.fillTraderScale(stockprices,maxTime);
 
 	return 0;
 }
