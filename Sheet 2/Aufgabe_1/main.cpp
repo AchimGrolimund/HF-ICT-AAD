@@ -35,10 +35,23 @@
  *==============================================[ EOF RDM ]=============================================================================*/
 #include <iostream>
 
+#include "trader.h"
+
 using namespace std;
 
 int main()
 {
+	Trader trader;
+	double startTime(9.00), endTime(17.50);
+	static int maxTime(0);
+
+	maxTime = (endTime-startTime)*60; //Zeit in minuten
+
+
+	int stockprices[maxTime], abc(0);
+
+
+	abc = trader.fillTraderScale(stockprices,maxTime);
 
 	return 0;
 }
