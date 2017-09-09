@@ -7,4 +7,5 @@ SOURCES += main.cpp \
     arrayutil.cpp
 
 HEADERS += \
-    arrayutil.h
+    arrayutil.h \
+    data.h

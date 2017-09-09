@@ -45,7 +45,7 @@ int main()
 	srand(time(NULL));
 
 	for(int i = 0; i < 10; i++){
-		array[i] = rand()%20;
+		array[i] = rand()%15;
 		cout<<i<<" ---> " <<array[i]<<endl;
 	}
 
