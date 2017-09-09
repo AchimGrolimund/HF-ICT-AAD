@@ -4,9 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += main.cpp \
-    trader.cpp \
-    data.cpp
+    arrayutil.cpp
 
 HEADERS += \
-    trader.h \
-    data.h
+    arrayutil.h

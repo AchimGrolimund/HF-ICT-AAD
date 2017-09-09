@@ -34,8 +34,10 @@
  *  *
  *==============================================[ EOF RDM ]=============================================================================*/
 #include <iostream>
+#include <ctime>
 
 #include "trader.h"
+#include "data.h"
 
 using namespace std;
 
@@ -44,14 +46,27 @@ int main()
 	Trader trader;
 	double startTime(9.00), endTime(17.50);
 	static int maxTime(0);
+	int result(0);
+	clock_t start,stop;
+
 
 	maxTime = (endTime-startTime)*60; //Zeit in minuten
 
-	int stockprices[maxTime], *abc;
+	int stockprices[maxTime], *returnValue;
 
-	abc = trader.fillTraderScale(maxTime);
+	returnValue = trader.fillTraderScale(maxTime);
 
-	Trader::calculateMaxProfit(abc,maxTime);
+
+	start = clock();
+	result = Trader::calculateMaxProfit(returnValue,maxTime);
+	stop = clock();
+	if(result > 0){
+		cout <<"Der Gewinn ist:\t "<<result<<endl;
+	}else{
+		cout <<"Der Verlust ist:\t "<<result<<endl;
+	}
+	cout<<"---------------\nBenoetigte Berechnungszeit: " <<(double)(stop-start)/CLOCKS_PER_SEC<<endl;
+
 
 
 	return 0;
