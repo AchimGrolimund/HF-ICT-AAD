@@ -49,14 +49,16 @@ int main()
 	srand(time(NULL));
 
 	for(int i = 0; i < ARRAY_SIZE; i++){
-		array[i] = rand()%15;
+		array[i] = (int)rand()%75465467;
 		cout<<i<<" ---> " <<array[i]<<endl;
 	}
 	cout<<"===================================="<<endl;
+
 	start = clock();
 	cout<<"Groesstes Produckt: "<<ArrayUtil::highestProduct(array,ARRAY_SIZE)<<endl;
 	stop = clock();
 	cout<<"-----------\nBerechnungszeit: "<<(double)(stop-start)/CLOCKS_PER_SEC<<" sec"<<endl;
+
 
 
 	return 0;

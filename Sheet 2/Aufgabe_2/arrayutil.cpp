@@ -30,8 +30,11 @@ int ArrayUtil::highestProduct(int *values, const int ARRAY_SIZE)
 
 int ArrayUtil::highestProduct(int *values, const int ARRAY_SIZE)
 {
+
+
 	int value1(0),value2(0),value3(0);
 	int pos1(0),pos2(0),pos3(0);
+	int result;
 
 	Data array[ARRAY_SIZE];
 
@@ -74,5 +77,10 @@ int ArrayUtil::highestProduct(int *values, const int ARRAY_SIZE)
 	}
 	std::cout<<"pos3: "<<pos3<<" Wert: "<<value3<<std::endl;
 
-	return (value1*value2*value3);
+	result = (value1*value2*value3);
+
+
+	return result > INT_MAX ? 0 : result;
+
 }
+
