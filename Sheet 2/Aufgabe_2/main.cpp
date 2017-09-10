@@ -33,6 +33,9 @@
  *==========================[ EOF RDM ]=================================================================================================*/
 #include <iostream>
 #include <time.h>
+#include <ctime>
+
+
 
 #include "arrayutil.h"
 
@@ -42,14 +45,19 @@ int main()
 {
 	static int ARRAY_SIZE(10);
 	int array[ARRAY_SIZE];
+	clock_t start,stop;
 	srand(time(NULL));
 
-	for(int i = 0; i < 10; i++){
+	for(int i = 0; i < ARRAY_SIZE; i++){
 		array[i] = rand()%15;
 		cout<<i<<" ---> " <<array[i]<<endl;
 	}
+	cout<<"===================================="<<endl;
+	start = clock();
+	cout<<"Groesstes Produckt: "<<ArrayUtil::highestProduct(array,ARRAY_SIZE)<<endl;
+	stop = clock();
+	cout<<"-----------\nBerechnungszeit: "<<(double)(stop-start)/CLOCKS_PER_SEC<<" sec"<<endl;
 
-	cout<<ArrayUtil::highestProduct(array,ARRAY_SIZE)<<endl;
 
 	return 0;
 }
