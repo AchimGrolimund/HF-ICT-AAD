@@ -43,7 +43,7 @@ using namespace std;
 
 int main()
 {
-	const int ARRAY_SIZE(519000);
+	const int ARRAY_SIZE(12);
 	clock_t start,stop;
 
 	int array[ARRAY_SIZE];
@@ -52,7 +52,7 @@ int main()
 
 	for(int i = 0; i < ARRAY_SIZE; i++){
 		array[i] =  static_cast<int>(rand()%12+(-6));
-		//cout<<i<<" ---> " <<array[i]<<endl;
+		cout<<i<<" ---> " <<array[i]<<endl;
 	}
 	cout<<"===================================="<<endl;
 	cout<<"ARRAY_SIZE: "<<ARRAY_SIZE<<endl;

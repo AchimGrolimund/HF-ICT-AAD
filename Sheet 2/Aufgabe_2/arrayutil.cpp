@@ -90,6 +90,7 @@ int ArrayUtil::highestProduct(int *values, const int ARRAY_SIZE)
 
 
 //Versuch 3 inkl. Negativen zahlenwerte (list)
+/*
 int ArrayUtil::highestProduct(int *values, const int ARRAY_SIZE)
 {
 	int result(0);
@@ -147,6 +148,78 @@ int ArrayUtil::highestProduct(int *values, const int ARRAY_SIZE)
 //	for(positiv_it = positiv_list.begin(); positiv_it != positiv_list.end();positiv_it++){
 //		std::cout<<"Positivwert: "<<*positiv_it<<std::endl;
 //	}
+	return result;
+}
+*/
+
+//Versuch 4 inkl. Negativwerte verbessert (list)
+int ArrayUtil::highestProduct(int *values, const int ARRAY_SIZE)
+{
+	int result(1);
+	int negativ_helper(1), positiv_helper(1);
+
+	std::list<int> negativ_list;
+	std::list<int> positiv_list;
+	std::list<int>::iterator positiv_it;
+	std::list<int>::iterator negativ_it;
+	//================================================
+
+	//values in Liste übergeben
+	for(int index = 0; index < ARRAY_SIZE; index++){
+		if(values[index] < 0){
+			negativ_list.push_back(values[index]);
+		}else if(values[index] > 0)
+		{
+			positiv_list.push_back(values[index]);
+		}
+	}
+		//Listen Sortieren
+	positiv_list.sort(std::greater<int>());
+	negativ_list.sort();
+		//Erstes Element in der *_it zuweisen (Zeiger)
+	positiv_it = positiv_list.begin();
+	negativ_it = negativ_list.begin();
+
+		//Prüfen ob es 2 Negativwerte gibt
+	if(negativ_list.size() > 2){
+			//Negativwerte Multiplizieren (- * - == +)
+		for(int i(0);i<2;i++){
+			negativ_helper *= *negativ_it;
+			++negativ_it;
+		}
+
+			//2t & 3t Grösstes Element Multiplizieren
+		positiv_it++;
+		for(int j(0);j<2;j++){
+			positiv_helper *= *positiv_it;
+			++positiv_it;
+		}
+			//*_it Zeiger wider auf das erste Element in der Liste stellen
+		positiv_it = positiv_list.begin();
+		negativ_it = negativ_list.begin();
+
+			//Prüfen welcher helper grösser ist
+		if(positiv_helper > negativ_helper){
+				//Ersten 3 Elemente Multiplizieren
+			for(int k(0);k<3;k++){
+				result *= *positiv_it;
+				++positiv_it;
+			}
+		}else{
+				//erste 2 Negativwerte (negativ_helper) mit dem ersten positivwert Multiplizieren.
+			result = (negativ_helper * *positiv_it);
+		}
+
+	}
+
+
+	for(negativ_it = negativ_list.begin(); negativ_it != negativ_list.end();negativ_it++){
+		std::cout<<"Negativwert: "<<*negativ_it<<std::endl;
+	}
+	std::cout<<std::endl;
+	for(positiv_it = positiv_list.begin(); positiv_it != positiv_list.end();positiv_it++){
+		std::cout<<"Positivwert: "<<*positiv_it<<std::endl;
+	}
 	return result;
 
 }
