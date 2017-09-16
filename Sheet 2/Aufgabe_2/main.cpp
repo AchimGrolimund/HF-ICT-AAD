@@ -9,7 +9,7 @@
  *
  *
  *
- * @Version:	1.0.0
+ * @Version:	1.2.3
  * @Author:		Achim Grolimund (achim.grolimund@hf-ict.info)
  * @Date:		09.09.2017
  *
@@ -28,7 +28,7 @@
  *				};
  *
  * Anmerkung:
- *				- - - - - -
+ *				- 3te Lösung mit std::Liste<int> gelöst, beachtet auch Negativwerte, kleiner fehler bei der Erstermittlung. :-(
  *
  *==========================[ EOF RDM ]=================================================================================================*/
 #include <iostream>
@@ -43,21 +43,25 @@ using namespace std;
 
 int main()
 {
-	static int ARRAY_SIZE(10);
-	int array[ARRAY_SIZE];
+	const int ARRAY_SIZE(519000);
 	clock_t start,stop;
+
+	int array[ARRAY_SIZE];
+
 	srand(time(NULL));
 
 	for(int i = 0; i < ARRAY_SIZE; i++){
-		array[i] = (int)rand()%75465467;
-		cout<<i<<" ---> " <<array[i]<<endl;
+		array[i] =  static_cast<int>(rand()%12+(-6));
+		//cout<<i<<" ---> " <<array[i]<<endl;
 	}
+	cout<<"===================================="<<endl;
+	cout<<"ARRAY_SIZE: "<<ARRAY_SIZE<<endl;
 	cout<<"===================================="<<endl;
 
 	start = clock();
 	cout<<"Groesstes Produckt: "<<ArrayUtil::highestProduct(array,ARRAY_SIZE)<<endl;
 	stop = clock();
-	cout<<"-----------\nBerechnungszeit: "<<(double)(stop-start)/CLOCKS_PER_SEC<<" sec"<<endl;
+	cout<<"-----------\nBerechnungszeit: "<<static_cast<double>((stop-start)/CLOCKS_PER_SEC)<<" sec"<<endl;
 
 
 
