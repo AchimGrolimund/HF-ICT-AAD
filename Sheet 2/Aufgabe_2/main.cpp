@@ -9,7 +9,7 @@
  *
  *
  *
- * @Version:	1.2.3
+ * @Version:	1.2.4
  * @Author:		Achim Grolimund (achim.grolimund@hf-ict.info)
  * @Date:		09.09.2017
  *
@@ -29,6 +29,7 @@
  *
  * Anmerkung:
  *				- 3te Lösung mit std::Liste<int> gelöst, beachtet auch Negativwerte, kleiner fehler bei der Erstermittlung. :-(
+ *				- 3.1 Lösung mit std::Liste<int> gelöst, verbesserte version
  *
  *==========================[ EOF RDM ]=================================================================================================*/
 #include <iostream>

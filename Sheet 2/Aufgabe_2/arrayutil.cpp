@@ -152,7 +152,7 @@ int ArrayUtil::highestProduct(int *values, const int ARRAY_SIZE)
 }
 */
 
-//Versuch 4 inkl. Negativwerte verbessert (list)
+//Versuch 3.1 inkl. Negativwerte verbessert (list)
 int ArrayUtil::highestProduct(int *values, const int ARRAY_SIZE)
 {
 	int result(1);
@@ -201,10 +201,7 @@ int ArrayUtil::highestProduct(int *values, const int ARRAY_SIZE)
 			//Prüfen welcher helper grösser ist
 		if(positiv_helper > negativ_helper){
 				//Ersten 3 Elemente Multiplizieren
-			for(int k(0);k<3;k++){
-				result *= *positiv_it;
-				++positiv_it;
-			}
+			result = (positiv_helper * (*positiv_it+2));
 		}else{
 				//erste 2 Negativwerte (negativ_helper) mit dem ersten positivwert Multiplizieren.
 			result = (negativ_helper * *positiv_it);
