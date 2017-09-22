@@ -24,6 +24,13 @@
  *
  *
  *==============================================[ EOF RDM ]=============================================================================*/
+#define DEBUG
+#ifdef DEBUG
+#define dout(str) do { std::cout << str << std::endl; } while( false )
+#else
+#define dout(str) do { } while ( false )
+#endif
+
 #include <iostream>
 #include <ctime>
 
@@ -34,7 +41,7 @@ using namespace std;
 int main()
 {
 	std::string s1="abcba";
-
+	dout("Debug");
 	cout<<StringUtil::isPalindrome(s1)<<endl;
 
 	return 0;
