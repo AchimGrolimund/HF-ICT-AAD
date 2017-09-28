@@ -24,7 +24,7 @@
  *
  *
  *==============================================[ EOF RDM ]=============================================================================*/
-#define DEBUG
+//#define DEBUG
 #ifdef DEBUG
 #define dout(str) do { std::cout << str << std::endl; } while( false )
 #else
@@ -33,16 +33,25 @@
 
 #include <iostream>
 #include <ctime>
+#include <chrono>
 
 #include "stringutil.h"
 
 using namespace std;
+using namespace std::chrono;
 
 int main()
 {
-	std::string s1="abcba";
+	std::string s1="abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba";
 	dout("Debug");
+	auto start = high_resolution_clock::now();
 	cout<<StringUtil::isPalindrome(s1)<<endl;
+	auto ende  = high_resolution_clock::now();
+	cout << endl << "Zeit: " << std::chrono::duration_cast<nanoseconds>(ende-start).count() << " ns"<<endl;
 
 	return 0;
 }
+
+
+
+
