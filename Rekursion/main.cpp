@@ -69,8 +69,10 @@ int fibReImp(int n) {
 /* AUFGABE 5, Exponentiation Rekursiv
 */
 double power(double x, int n) { //x = Base, n = hoch
-	if(n<=1){
-		return x;
+	if(n < 0){
+		return 0;
+	}else if(n == 0){
+		return 1;
 	}else{
 		return x * power(x,n-1);
 	}
