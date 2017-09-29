@@ -23,4 +23,10 @@ bool StringUtil::isPalindrome(std::string input)
 	return true;
 }
 
-
+bool StringUtil::isPalindromeRek(std::string input)
+{
+	if(input.size() == 0 || input.size() == 1){
+		return true;
+	}
+	return (input[0] == input[input.length()-1] && isPalindromeRek(input.substr(1, input.length()-2)));
+}

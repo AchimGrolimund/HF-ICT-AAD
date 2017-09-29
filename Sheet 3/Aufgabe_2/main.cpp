@@ -42,12 +42,17 @@ using namespace std::chrono;
 
 int main()
 {
-	std::string s1="abcdefghijklmnopqrstuvwxyzzyxwvutsrqponmlkjihgfedcba";
+	std::string s1="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 	dout("Debug");
 	auto start = high_resolution_clock::now();
 	cout<<StringUtil::isPalindrome(s1)<<endl;
 	auto ende  = high_resolution_clock::now();
 	cout << endl << "Zeit: " << std::chrono::duration_cast<nanoseconds>(ende-start).count() << " ns"<<endl;
+
+	auto start1 = high_resolution_clock::now();
+	cout<<StringUtil::isPalindromeRek(s1)<<endl;
+	auto ende1  = high_resolution_clock::now();
+	cout << endl << "Zeit: " << std::chrono::duration_cast<nanoseconds>(ende1-start1).count() << " ns"<<endl;
 
 	return 0;
 }

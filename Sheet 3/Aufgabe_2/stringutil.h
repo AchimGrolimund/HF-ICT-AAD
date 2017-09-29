@@ -8,7 +8,7 @@ class StringUtil
 {
 	public:
 		static bool isPalindrome(std::string input);
-		static bool rec_isPalindrome(std::string input);
+		static bool isPalindromeRek(std::string input);
 };
 
 #endif // STRINGUTIL_H
