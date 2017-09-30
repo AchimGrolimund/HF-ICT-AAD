@@ -25,15 +25,42 @@
  *
  *==============================================[ EOF RDM ]=============================================================================*/
 #include <iostream>
+#include <set>
 #include <ctime>
+#include <cstdlib>
 #include "stringutil.h"
 
 using namespace std;
 
-int main()
-{
-	StringUtil::lcs("hallo","hallo");
 
 
+int main() {
+	time_t start, stop;
+
+	string test1 = "";
+	string test2 = "";
+	for(int i = 0; i < 1000; i++){
+		test1 += rand() % 26 + 'A';
+		test2 += rand() % 26 + 'A';
+	}
+
+
+	start = clock();
+	cout << StringUtil::lcs(test1, test2) << endl;
+	stop = clock();
+	cout << "Laufzeit = " << (double)(stop-start)/CLOCKS_PER_SEC << endl;
+	cout << "String laenge = " << test1.length() << endl;
+	cout << "********************************************"<<endl;
+
+	for(int i = 0; i < 1000; i++){
+		test1 += rand() % 26 + 'A';
+		test2 += rand() % 26 + 'A';
+	}
+
+	start = clock();
+	cout << StringUtil::lcs(test1, test2) << endl;
+	stop = clock();
+	cout << "Laufzeit = " << (double)(stop-start)/CLOCKS_PER_SEC << endl;
+	cout << "String laenge = " << test1.length() << endl;
 	return 0;
 }
