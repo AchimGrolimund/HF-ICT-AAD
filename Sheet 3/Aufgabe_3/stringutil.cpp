@@ -9,7 +9,7 @@ using namespace std;
 string StringUtil::lcs(string input1, string input2) {
 	set<string> checkString;
 	set<string>::iterator it;
-	string longString = "NO STRING FOUND";
+	string longString = "NOTHING FOUND";
 	unsigned int temp = 0;
 	string temp1 = "";
 	int count = 0;

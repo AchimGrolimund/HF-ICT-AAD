@@ -23,6 +23,8 @@ bool StringUtil::isPalindrome(std::string input)
 	return true;
 }
 
+
+//Rekursive Funktion
 bool StringUtil::isPalindromeRek(std::string input)
 {
 	if(input.size() == 0 || input.size() == 1){
