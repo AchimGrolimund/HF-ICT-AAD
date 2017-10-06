@@ -9,4 +9,5 @@ SOURCES += main.cpp \
 
 HEADERS += \
     result.h \
-    arrayutil.h
+    arrayutil.h \
+    overloading.h

@@ -5,7 +5,9 @@
 class Result
 {
 	public:
-		Result();
+		int nPositive;
+		int nZero;
+		int nNegative;
 };
 
 #endif // RESULT_H

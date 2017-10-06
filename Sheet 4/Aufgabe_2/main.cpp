@@ -37,18 +37,30 @@
 #include <ctime>
 #include <chrono>
 
+#include <vector>
+
+#include "result.h"
+#include "arrayutil.h"
+#include "overloading.h"
+
+
 
 using namespace std;
 using namespace std::chrono;
 
+
+
+
+
 int main()
 {
-
+	Result myResult;
+	vector<int> myVec{1, 10, 0, -6, -9, 2, 5};
 
 	auto start = high_resolution_clock::now();
 
-	// Code Here ...
-
+	myResult = ArrayUtil::analyseArray(myVec);
+	cout<<myResult<<endl;
 	auto ende  = high_resolution_clock::now();
 
 	//<-- Asgabe der Zeitmessung -->
