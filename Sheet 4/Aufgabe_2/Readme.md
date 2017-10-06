@@ -1,4 +1,4 @@
-#2 Plus Minus
+# 2 Plus Minus
 
 Implementieren Sie eine Methode *analyseArray* welche als Parameter einen vector mit Integer
 Werten bekommt. Diese Werte sind entweder Positiv, Negativ oder Null. Die Methode soll nun
@@ -21,7 +21,7 @@ class ArrayUtil {
 };
 ```
 
-
 **Beispiel:**
 Input: 1, 10, 0, -6, -9, 2, 5
+
 Lösung: [nPositive: 57.1%; nZero: 14.3%; nNegative: 28.6%]
