@@ -22,6 +22,7 @@ class ArrayUtil {
 ```
 
 **Beispiel:**
-Input: 1, 10, 0, -6, -9, 2, 5
 
-Lösung: [nPositive: 57.1%; nZero: 14.3%; nNegative: 28.6%]
+**Input:** 1, 10, 0, -6, -9, 2, 5
+
+**Lösung:** [nPositive: 57.1%; nZero: 14.3%; nNegative: 28.6%]
