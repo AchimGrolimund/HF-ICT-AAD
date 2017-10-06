@@ -6,7 +6,7 @@
 class overloading
 {
 	public:
-		std::ostream & operator<<(std::ostream & stream, const Result & obj){
+		friend std::ostream & operator<<(std::ostream & stream, const Result & obj){
 			stream <<"Negativ: "<< obj.nNegative << std::endl;
 			stream <<"Positiv: "<< obj.nPositive << std::endl;
 			stream <<"Zero: "<< obj.nZero << std::endl;
