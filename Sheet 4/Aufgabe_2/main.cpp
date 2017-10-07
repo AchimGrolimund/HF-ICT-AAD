@@ -26,7 +26,7 @@
  *
  *
  *==============================================[ EOF RDM ]=============================================================================*/
-//#define DEBUG //Bei Release auskommentieren!!
+#define DEBUG //Bei Release auskommentieren!!
 #ifdef DEBUG
 #define dout(str) do { std::cout << str << std::endl; } while( false )
 #else
@@ -41,7 +41,6 @@
 
 #include "result.h"
 #include "arrayutil.h"
-#include "overloading.h"
 
 
 
@@ -54,13 +53,18 @@ using namespace std::chrono;
 
 int main()
 {
-	Result myResult;
 	vector<int> myVec{1, 10, 0, -6, -9, 2, 5};
 
+	Result *abc = new Result();
+
+	*abc = ArrayUtil::analyseArray(myVec);
+
+	cout<<abc<<" in Main.cpp"<<endl;
+	std::cout<<"----------------"<<std::endl;
 	auto start = high_resolution_clock::now();
 
-	myResult = ArrayUtil::analyseArray(myVec);
-	cout<<myResult<<endl;
+
+
 	auto ende  = high_resolution_clock::now();
 
 	//<-- Asgabe der Zeitmessung -->
