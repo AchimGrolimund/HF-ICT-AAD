@@ -6,6 +6,7 @@ class StringUtil
 {
 	public:
 		static char getLonelyElement(std::string input);
+		static char getLonelyElement2(std::string input);
 };
 
 #endif // STRINGUTIL_H

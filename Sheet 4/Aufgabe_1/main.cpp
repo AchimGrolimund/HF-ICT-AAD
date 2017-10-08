@@ -26,12 +26,6 @@
  *
  *
  *==============================================[ EOF RDM ]=============================================================================*/
-//#define DEBUG //Bei Release auskommentieren!!
-#ifdef DEBUG
-#define dout(str) do { std::cout << str << std::endl; } while( false )
-#else
-#define dout(str) do { } while ( false )
-#endif
 
 #include <iostream>
 #include <ctime>
@@ -48,7 +42,7 @@ int main()
 
 
 	auto start = high_resolution_clock::now();
-	cout<<StringUtil::getLonelyElement("aabbccddeefgghhiijj88")<<endl;
+	cout<<StringUtil::getLonelyElement("bbccddeefgghhiaijj88")<<endl;
 	auto ende  = high_resolution_clock::now();
 
 	//<-- Asgabe der Zeitmessung -->

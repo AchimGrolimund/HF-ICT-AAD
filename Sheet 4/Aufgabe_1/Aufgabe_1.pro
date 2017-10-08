@@ -8,4 +8,5 @@ SOURCES += main.cpp \
 
 HEADERS += \
     stringutil.h \
-    data.h
+    data.h \
+    debug.h
