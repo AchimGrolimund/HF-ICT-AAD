@@ -14,7 +14,6 @@ Result ArrayUtil::analyseArray(std::vector<int> input)
 	Result result;
 	std::vector<int>::iterator it;
 
-
 	// <-- Durch den input vector Iterieren -->
 	for(it=input.begin();it != input.end(); it++){
 		if(*it < 0){

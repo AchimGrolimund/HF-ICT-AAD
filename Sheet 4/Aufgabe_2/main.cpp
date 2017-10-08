@@ -43,10 +43,10 @@ using namespace std::chrono;
 
 int main()
 {
-	srand(time(NULL));
+	srand(static_cast<unsigned int>(time(NULL)));
 	vector<int> myVec{1, 10, 0, -6, -9, 2, 5};
 	vector<int> myVec2;
-	for(unsigned int i = 0; i < 1000; i++){
+	for(unsigned int i = 0; i < 100000000; i++){
 		myVec2.push_back(rand()%100-50);
 	}
 
@@ -61,7 +61,7 @@ int main()
 	cout << "Zeit: " << std::chrono::duration_cast<milliseconds>(ende-start).count() << " Milliseconds"<<endl;
 	cout << "Zeit: " << std::chrono::duration_cast<seconds>(ende-start).count() << " Seconds"<<endl;
 
-	cout<<"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ V2 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"<<endl;
+	cout<<"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ V2 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"<<endl;
 
 	start = high_resolution_clock::now();
 	Result result2 = ArrayUtil::analyseArray(myVec2);
