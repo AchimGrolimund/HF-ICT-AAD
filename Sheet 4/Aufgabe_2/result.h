@@ -14,20 +14,13 @@ class Result
 		int nNegative;
 
 		Result();
-		~Result();
+		//~Result();
 		//Result(const Result & obj);
-		Result operator= (const Result & obj);
+		//Result operator= (const Result & obj);
 
-		friend std::ostream & operator<<(std::ostream & stream, const Result & obj);
+
 
 };
 
-std::ostream & operator<<(std::ostream & stream, const Result & obj){
-	dout("frind ostream \n");
-	stream <<"Negativ: "<< obj.nNegative << std::endl;
-	stream <<"Positiv: "<< obj.nPositive << std::endl;
-	stream <<"Zero: "<< obj.nZero << std::endl;
 
-	return stream;
-}
 #endif // RESULT_H

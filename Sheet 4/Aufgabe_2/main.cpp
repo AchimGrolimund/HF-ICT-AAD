@@ -55,16 +55,18 @@ int main()
 {
 	vector<int> myVec{1, 10, 0, -6, -9, 2, 5};
 
+
+
 	auto start = high_resolution_clock::now();
 
-	// Code Here
+	ArrayUtil::analyseArray(myVec);
 
 	auto ende  = high_resolution_clock::now();
 
 	//<-- Asgabe der Zeitmessung -->
 	cout << endl << "Zeit: " << std::chrono::duration_cast<nanoseconds>(ende-start).count() << " ns"<<endl;
-	cout << endl << "Zeit: " << std::chrono::duration_cast<milliseconds>(ende-start).count() << " ms"<<endl;
-	cout << endl << "Zeit: " << std::chrono::duration_cast<seconds>(ende-start).count() << " s"<<endl;
+	cout << "Zeit: " << std::chrono::duration_cast<milliseconds>(ende-start).count() << " ms"<<endl;
+	cout << "Zeit: " << std::chrono::duration_cast<seconds>(ende-start).count() << " s"<<endl;
 
 	return 0;
 }
