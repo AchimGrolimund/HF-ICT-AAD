@@ -1,15 +1,19 @@
 #include "arrayutil.h"
 #include "result.h"
+#include "debug.h"
 
 
 Result ArrayUtil::analyseArray(std::vector<int> input)
 {
 	Result *result = new Result();
 	std::vector<int>::iterator it;
+
+	// <-- Alles auf 0 Setzen -->
 	result->nNegative = 0;
 	result->nPositive = 0;
 	result->nZero = 0;
 
+	// <-- Durch den input vector Iterieren -->
 	for(it=input.begin();it != input.end(); it++){
 		if(*it < 0){
 			result->nNegative += 1;
@@ -21,9 +25,11 @@ Result ArrayUtil::analyseArray(std::vector<int> input)
 		}
 	}
 
-	std::cout<<"----------------"<<std::endl;
-	std::cout<<result<<" in Arrayutil.cpp"<<std::endl;
-	std::cout<<"----------------"<<std::endl;
+	// <-- Debug Ausgabe -->
+	dout("----------------\n");
+	dout(result);
+	dout("\nin Arrayutil.cpp");
+	dout("----------------\n");
 
 	return *result;
 

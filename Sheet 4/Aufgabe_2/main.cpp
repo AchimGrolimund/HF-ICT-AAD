@@ -55,15 +55,9 @@ int main()
 {
 	vector<int> myVec{1, 10, 0, -6, -9, 2, 5};
 
-	Result *abc = new Result();
-
-	*abc = ArrayUtil::analyseArray(myVec);
-
-	cout<<abc<<" in Main.cpp"<<endl;
-	std::cout<<"----------------"<<std::endl;
 	auto start = high_resolution_clock::now();
 
-
+	// Code Here
 
 	auto ende  = high_resolution_clock::now();
 
