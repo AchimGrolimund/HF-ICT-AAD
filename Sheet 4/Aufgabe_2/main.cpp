@@ -8,7 +8,7 @@
  *    ██║     ███████╗╚██████╔╝███████║    ██║ ╚═╝ ██║██║██║ ╚████║╚██████╔╝███████║
  *    ╚═╝     ╚══════╝ ╚═════╝ ╚══════╝    ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
  *
- * @Version:	1.0.2
+ * @Version:	1.0.5
  * @Author:		Achim Grolimund (achim.grolimund@hf-ict.info)
  * @Date:		08.10.2017
  *
@@ -30,6 +30,7 @@
 #include <iostream>
 #include <ctime>
 #include <chrono>
+#include <random>
 
 #include <vector>
 
@@ -42,12 +43,30 @@ using namespace std::chrono;
 
 int main()
 {
+	srand(time(NULL));
 	vector<int> myVec{1, 10, 0, -6, -9, 2, 5};
+	vector<int> myVec2;
+	for(unsigned int i = 0; i < 1000; i++){
+		myVec2.push_back(rand()%100-50);
+	}
 
 	auto start = high_resolution_clock::now();
 	Result result = ArrayUtil::analyseArray(myVec);
 	ArrayUtil::printArray(result, myVec.size());
 	auto ende  = high_resolution_clock::now();
+
+		//<-- Asgabe der Zeitmessung -->
+	cout << endl << "Zeit: " << std::chrono::duration_cast<nanoseconds>(ende-start).count() << " Nanoseconds"<<endl;
+	cout << "Zeit: " << std::chrono::duration_cast<microseconds>(ende-start).count() << " Microseconds"<<endl;
+	cout << "Zeit: " << std::chrono::duration_cast<milliseconds>(ende-start).count() << " Milliseconds"<<endl;
+	cout << "Zeit: " << std::chrono::duration_cast<seconds>(ende-start).count() << " Seconds"<<endl;
+
+	cout<<"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ V2 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"<<endl;
+
+	start = high_resolution_clock::now();
+	Result result2 = ArrayUtil::analyseArray(myVec2);
+	ArrayUtil::printArray(result2, myVec2.size());
+	ende  = high_resolution_clock::now();
 
 		//<-- Asgabe der Zeitmessung -->
 	cout << endl << "Zeit: " << std::chrono::duration_cast<nanoseconds>(ende-start).count() << " Nanoseconds"<<endl;

@@ -31,7 +31,7 @@ Result ArrayUtil::analyseArray(std::vector<int> input)
 
 }
 
-void ArrayUtil::printArray(Result &input, int inputSize)
+void ArrayUtil::printArray(Result &input, unsigned int inputSize)
 {
 	// <-- Debug Ausgabe -->
 	dout("----------------\n");
@@ -40,12 +40,11 @@ void ArrayUtil::printArray(Result &input, int inputSize)
 
 	// <-- Ausgabe Result Obj -->
 	std::cout<<input<<std::endl;
-	std::cout<<"**********************************"<<std::endl;
 
 	// <-- Ausgabe % Werte vom Result Obj -->
 	std::cout.precision(3);
-	std::cout<<"nPositive: "<< (static_cast<float>(input.nPositive)/inputSize)*100 <<"%"<<std::endl;
-	std::cout<<"nZero: "<< (static_cast<float>(input.nZero)/inputSize)*100 <<"%"<<std::endl;
-	std::cout<<"nNegative: "<< (static_cast<float>(input.nNegative)/inputSize)*100 <<"%"<<std::endl;
+	std::cout<<"nPositive: \t"<< (static_cast<float>(input.nPositive)/inputSize)*100 <<"%"<<std::endl;
+	std::cout<<"nZero: \t\t"<< (static_cast<float>(input.nZero)/inputSize)*100 <<"%"<<std::endl;
+	std::cout<<"nNegative: \t"<< (static_cast<float>(input.nNegative)/inputSize)*100 <<"%"<<std::endl;
 
 }

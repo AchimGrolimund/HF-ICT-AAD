@@ -10,7 +10,7 @@ class ArrayUtil
 {
 	public:
 		static Result analyseArray(std::vector<int> input);
-		static void printArray(Result &input, int inputSize);
+		static void printArray(Result &input, unsigned int inputSize);
 
 };
 
