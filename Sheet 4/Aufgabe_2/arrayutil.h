@@ -10,21 +10,9 @@ class ArrayUtil
 {
 	public:
 		static Result analyseArray(std::vector<int> input);
-
-		friend std::ostream & operator<<(std::ostream & stream, const Result & obj)
-		{
-			dout("frind ostream \n");
-			stream <<"Negativ: "<< obj.nNegative << std::endl;
-			stream <<"Positiv: "<< obj.nPositive << std::endl;
-			stream <<"Zero: "<< obj.nZero << std::endl;
-
-			return stream;
-		}
+		static void printArray(Result &input, int inputSize);
 
 };
-
-
-
 
 
 #endif // ARRAYUTIL_H

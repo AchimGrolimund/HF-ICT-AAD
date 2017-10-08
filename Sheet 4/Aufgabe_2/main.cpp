@@ -8,9 +8,9 @@
  *    ██║     ███████╗╚██████╔╝███████║    ██║ ╚═╝ ██║██║██║ ╚████║╚██████╔╝███████║
  *    ╚═╝     ╚══════╝ ╚═════╝ ╚══════╝    ╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
  *
- * @Version:	1.0.0
+ * @Version:	1.0.2
  * @Author:		Achim Grolimund (achim.grolimund@hf-ict.info)
- * @Date:		x.x.2017
+ * @Date:		08.10.2017
  *
  * @Description:
  *				Implementieren Sie eine Methode analyseArray welche als Parameter einen vector mit Integer
@@ -37,33 +37,23 @@
 #include "result.h"
 #include "arrayutil.h"
 
-
-
 using namespace std;
 using namespace std::chrono;
-
-
-
-
 
 int main()
 {
 	vector<int> myVec{1, 10, 0, -6, -9, 2, 5};
 
-
-
 	auto start = high_resolution_clock::now();
-
 	Result result = ArrayUtil::analyseArray(myVec);
-
+	ArrayUtil::printArray(result, myVec.size());
 	auto ende  = high_resolution_clock::now();
 
-	cout << &result <<endl;
-
-	//<-- Asgabe der Zeitmessung -->
-	cout << endl << "Zeit: " << std::chrono::duration_cast<nanoseconds>(ende-start).count() << " ns"<<endl;
-	cout << "Zeit: " << std::chrono::duration_cast<milliseconds>(ende-start).count() << " ms"<<endl;
-	cout << "Zeit: " << std::chrono::duration_cast<seconds>(ende-start).count() << " s"<<endl;
+		//<-- Asgabe der Zeitmessung -->
+	cout << endl << "Zeit: " << std::chrono::duration_cast<nanoseconds>(ende-start).count() << " Nanoseconds"<<endl;
+	cout << "Zeit: " << std::chrono::duration_cast<microseconds>(ende-start).count() << " Microseconds"<<endl;
+	cout << "Zeit: " << std::chrono::duration_cast<milliseconds>(ende-start).count() << " Milliseconds"<<endl;
+	cout << "Zeit: " << std::chrono::duration_cast<seconds>(ende-start).count() << " Seconds"<<endl;
 
 	return 0;
 }

@@ -1,10 +1,16 @@
 #include "arrayutil.h"
 #include "result.h"
 #include "debug.h"
+#include <iostream>
 
 
 Result ArrayUtil::analyseArray(std::vector<int> input)
 {
+	// <-- Debug Ausgabe -->
+	dout("----------------\n");
+	dout("in analyseArray");
+	dout("----------------\n");
+
 	Result result;
 	std::vector<int>::iterator it;
 
@@ -21,11 +27,25 @@ Result ArrayUtil::analyseArray(std::vector<int> input)
 		}
 	}
 
+	return result;
+
+}
+
+void ArrayUtil::printArray(Result &input, int inputSize)
+{
 	// <-- Debug Ausgabe -->
 	dout("----------------\n");
-	dout("in Arrayutil.cpp");
+	dout("in printArray");
 	dout("----------------\n");
 
-	return result;
+	// <-- Ausgabe Result Obj -->
+	std::cout<<input<<std::endl;
+	std::cout<<"**********************************"<<std::endl;
+
+	// <-- Ausgabe % Werte vom Result Obj -->
+	std::cout.precision(3);
+	std::cout<<"nPositive: "<< (static_cast<float>(input.nPositive)/inputSize)*100 <<"%"<<std::endl;
+	std::cout<<"nZero: "<< (static_cast<float>(input.nZero)/inputSize)*100 <<"%"<<std::endl;
+	std::cout<<"nNegative: "<< (static_cast<float>(input.nNegative)/inputSize)*100 <<"%"<<std::endl;
 
 }
