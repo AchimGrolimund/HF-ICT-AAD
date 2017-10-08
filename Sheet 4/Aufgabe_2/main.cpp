@@ -26,12 +26,6 @@
  *
  *
  *==============================================[ EOF RDM ]=============================================================================*/
-#define DEBUG //Bei Release auskommentieren!!
-#ifdef DEBUG
-#define dout(str) do { std::cout << str << std::endl; } while( false )
-#else
-#define dout(str) do { } while ( false )
-#endif
 
 #include <iostream>
 #include <ctime>
@@ -39,6 +33,7 @@
 
 #include <vector>
 
+#include "debug.h"
 #include "result.h"
 #include "arrayutil.h"
 
@@ -59,9 +54,11 @@ int main()
 
 	auto start = high_resolution_clock::now();
 
-	ArrayUtil::analyseArray(myVec);
+	Result result = ArrayUtil::analyseArray(myVec);
 
 	auto ende  = high_resolution_clock::now();
+
+	cout << &result <<endl;
 
 	//<-- Asgabe der Zeitmessung -->
 	cout << endl << "Zeit: " << std::chrono::duration_cast<nanoseconds>(ende-start).count() << " ns"<<endl;

@@ -14,10 +14,6 @@ class Result
 		int nNegative;
 
 		Result();
-		//~Result();
-		//Result(const Result & obj);
-		//Result operator= (const Result & obj);
-
 
 
 };
