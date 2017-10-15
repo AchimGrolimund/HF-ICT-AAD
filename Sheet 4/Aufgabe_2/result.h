@@ -17,14 +17,12 @@ class Result
 
 		friend std::ostream & operator<<(std::ostream & stream, const Result & obj)
 		{
-			dout("frind ostream \n");
 			stream <<"Negativ: \t"<< obj.nNegative << std::endl;
 			stream <<"Positiv: \t"<< obj.nPositive << std::endl;
 			stream <<"Zero: \t\t"<< obj.nZero << std::endl;
 
 			return stream;
 		}
-
 };
 
 
