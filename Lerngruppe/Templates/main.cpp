@@ -25,38 +25,39 @@
 
 using namespace std;
 
-int ggt(int,int);
-int ggtRek(int,int);
+class Vector
+{
+	private:
+		int a,b,c;
+	public:
+		Vector(int a, int b, int c) : a(a), b(b), c(c){}
+		Vector add(const Vector & obj);
+		void print();
+};
+Vector Vector::add(const Vector &obj)
+{
+	Vector result(a+obj.a, b+obj.b, c+obj.c);
+	return result;
+}
+
+void Vector::print()
+{
+	cout << "a="<<a<<"b="<<b<<"c="<<c<<endl;
+}
+
+template <class T>
+T add(T & obj1, T & obj2){
+	return obj1 + obj2; // Fehler, der + Operator müsste überladen werden.
+}
 
 int main()
 {
-
-	cout<<ggt(15,30)<<endl;
-	cout<<ggtRek(15,30)<<endl;
+	Vector v1(1,2,3);
+	Vector v2(4,5,6);
+	Vector v3= add<Vector>(v1,v2);
+	v3.print();
 
 	return 0;
 }
 
-//<-- GGT Berechnen -->
-int ggt(int a, int b){
-	while (a != b) {
-		if (a>b) {
-			a-=b;
-		}else{
-			b-=a;
-		}
-	}
-	return  a;
-}
 
-//<-- GGT Berechnen Rekursiv -->
-int ggtRek(int a, int b){
-	if (a != b) {
-		if(a>b){
-			ggtRek(a-=b,b);
-		}else{
-			ggtRek(a,b-=a);
-		}
-	}
-	return a;
-}
