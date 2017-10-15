@@ -18,35 +18,27 @@
  *==============================================[ EOF RDM ]=============================================================================*/
 
 #define DEBUG
-#include <iostream>
+#include <bits/stdc++.h>
 
 #include "C:/Users/achim/Documents/Programming/C++/HF-ICT-AAD/myFunks/myFunks/myfunks.h"
 #include "C:/Users/achim/Documents/Programming/C++/HF-ICT-AAD/myFunks/myFunks/debug.h"
 
 using namespace std;
 
-int ggt(int,int);
+int kgv(int,int);
 int ggtRek(int,int);
+
 
 int main()
 {
-
-	cout<<ggt(15,30)<<endl;
-	cout<<ggtRek(15,30)<<endl;
+	cout<<kgv(12,18)<<endl; //36
 
 	return 0;
 }
 
-//<-- GGT Berechnen -->
-int ggt(int a, int b){
-	while (a != b) {
-		if (a>b) {
-			a-=b;
-		}else{
-			b-=a;
-		}
-	}
-	return  a;
+int kgv(int zahl1, int zahl2)
+{
+   return (zahl1*zahl2)/ggtRek(zahl1, zahl2);
 }
 
 //<-- GGT Berechnen Rekursiv -->
