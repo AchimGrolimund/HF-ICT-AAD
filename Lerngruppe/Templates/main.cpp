@@ -17,8 +17,11 @@
  *
  *==============================================[ EOF RDM ]=============================================================================*/
 
+
+
 #define DEBUG
 #include <iostream>
+#include <bits/stdc++.h>
 
 #include "C:/Users/achim/Documents/Programming/C++/HF-ICT-AAD/myFunks/myFunks/myfunks.h"
 #include "C:/Users/achim/Documents/Programming/C++/HF-ICT-AAD/myFunks/myFunks/debug.h"
@@ -33,6 +36,12 @@ class Vector
 		Vector(int a, int b, int c) : a(a), b(b), c(c){}
 		Vector add(const Vector & obj);
 		void print();
+		//<-- überladung des + Operators -->
+		Vector  operator+(const Vector & obj1){
+			Vector vec(this->a + obj1.a, this->b + obj1.b, this->c + obj1.c);
+			return vec;
+		}
+
 };
 Vector Vector::add(const Vector &obj)
 {
@@ -52,9 +61,12 @@ T add(T & obj1, T & obj2){
 
 int main()
 {
+
 	Vector v1(1,2,3);
 	Vector v2(4,5,6);
 	Vector v3= add<Vector>(v1,v2);
+	v1.print();
+	v2.print();
 	v3.print();
 
 	return 0;
