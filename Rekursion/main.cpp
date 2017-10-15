@@ -28,6 +28,7 @@ Arbeitsblatt Rekursion
 #include <ratio>
 #include <ctime>
 #include <thread>
+#include <map>
 
 using namespace std::chrono;
 using namespace std;
@@ -63,7 +64,13 @@ int fibIt(int n) {
 /* AUFGABE 4, Fibonacci Rekursiv mit Verbesserung
 */
 int fibReImp(int n) {
-	// your code
+	map<int, int> solvedFib;
+		if (n == 1 || n == 2) return 1;
+		else {
+			solvedFib.insert(pair<int, int>(n, (solvedFib.find(n - 1) != solvedFib.end() ? solvedFib.at(n - 1) : fibReImp(
+					n - 1)) + (solvedFib.find(n - 2) != solvedFib.end() ? solvedFib.at(n - 2) : fibReImp(n - 2))));
+			return solvedFib.at(n);
+		}
 }
 
 /* AUFGABE 5, Exponentiation Rekursiv
