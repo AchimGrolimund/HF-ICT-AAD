@@ -10,7 +10,7 @@
 using namespace std;
 using namespace std::chrono;
 
-namespace myFunks {
+
 	class myArray{
 		public:
 			template<class T>
@@ -93,8 +93,5 @@ namespace myFunks {
 	}
 
 
-
-
-}//Ende Namespace
 
 
