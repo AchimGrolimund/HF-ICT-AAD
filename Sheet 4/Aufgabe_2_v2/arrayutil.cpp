@@ -5,7 +5,6 @@
 
 Result ArrayUtil::analyseArray(std::vector<int> input)
 {
-
 	Result result;
 	std::vector<int>::iterator it;
 
@@ -22,7 +21,6 @@ Result ArrayUtil::analyseArray(std::vector<int> input)
 	}
 
 	return result;
-
 }
 
 

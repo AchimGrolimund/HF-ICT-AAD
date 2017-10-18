@@ -1,6 +1,5 @@
 #include "result.h"
 
-
 Result::Result()
 {
 	nNegative = 0;
