@@ -1,7 +1,6 @@
 #include "stringutil.h"
 #include "data.h"
-
-#include <list>
+#include <bits/stdc++.h> //Alle benötigten Includes
 
 using namespace std;
 
@@ -11,13 +10,13 @@ char StringUtil::getLonelyElement(std::string input)
 	Data buchstabe[255];
 
 	// <-- buchstabe Array.counter 0 initialisieren -->
-	for(unsigned int i(0); i< 255; i++){
+	for(int i(0); i< 255; i++){
 		buchstabe[i].counter = 0;
 	}
 
 	// <-- input in buchstaben Array.counter füllen -->
-	for(unsigned int j(0); j< input.size(); j++){
-		buchstabe[static_cast<int>(input.at(j))].counter += 1;
+	for(auto x : input){
+		buchstabe[static_cast<int>(x)].counter += 1;
 	}
 
 	for(unsigned int k(0); k < 255; k++){
@@ -39,16 +38,17 @@ char StringUtil::getLonelyElement2(std::string input)
 		buchstabe[i].pos = -1;
 	}
 
-	// <-- input in buchstaben Array.counter füllen -->
-	for(unsigned int j(0); j< input.size(); j++){
-		buchstabe[static_cast<int>(input.at(j))].counter += 1;
-		buchstabe[static_cast<int>(input.at(j))].pos = j;
+	// <-- input in buchstaben Array.counter & .pos füllen -->
+	for(auto j : input){
+		buchstabe[static_cast<int>(j)].counter += 1;
+		buchstabe[static_cast<int>(j)].pos = static_cast<int>(j);
 	}
 
-	for(unsigned int k(0); k < 255; k++){
-		if(buchstabe[k].counter == 1 && buchstabe[k].pos < temp){
-			temp = buchstabe[k].pos;
-			tempVal = k;
+	//<-- Suche ersten einzelnen Buchstaben in Zeichenkette -->
+	for(auto l : input){
+		if(buchstabe[static_cast<int>(l)].counter == 1 && buchstabe[static_cast<int>(l)].pos < temp){
+			temp = static_cast<int>(l);
+			return static_cast<char>(temp);
 		}
 	}
 

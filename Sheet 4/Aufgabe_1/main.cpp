@@ -27,12 +27,9 @@
  *
  *==============================================[ EOF RDM ]=============================================================================*/
 
-#include <iostream>
-#include <ctime>
-#include <chrono>
+#include <bits/stdc++.h> //Alle benötigten Includes
 
 #include "stringutil.h"
-
 
 using namespace std;
 using namespace std::chrono;
@@ -42,7 +39,7 @@ int main()
 
 
 	auto start = high_resolution_clock::now();
-	cout<<StringUtil::getLonelyElement("bbccddeefgghhiaijj88")<<endl;
+	cout<<StringUtil::getLonelyElement("aabbccddzf")<<endl;
 	auto ende  = high_resolution_clock::now();
 
 	//<-- Asgabe der Zeitmessung -->
