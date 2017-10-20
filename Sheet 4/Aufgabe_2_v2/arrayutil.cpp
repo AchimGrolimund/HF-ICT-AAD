@@ -1,19 +1,17 @@
 #include "arrayutil.h"
 #include "result.h"
-#include <iostream>
+#include <bits/stdc++.h> //Alle benötigten Includes
 
 
 Result ArrayUtil::analyseArray(std::vector<int> input)
 {
 	Result result;
-	std::vector<int>::iterator it;
-
-	// <-- Durch den input vector Iterieren -->
-	for(it=input.begin();it != input.end(); it++){
-		if(*it < 0){
+	//<-- Vector "input" durchlaufen -->
+	for(int x : input){
+		if(x < 0){
 			result.nNegative += 1;
 		}
-		else if (*it > 0) {
+		else if (x > 0) {
 			result.nPositive += 1;
 		}else {
 			result.nZero += 1;
