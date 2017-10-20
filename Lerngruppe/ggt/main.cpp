@@ -28,9 +28,9 @@ using namespace std;
 int ggt(int,int);
 int ggtRek(int,int);
 
+
 int main()
 {
-
 	cout<<ggt(15,30)<<endl;
 	cout<<ggtRek(15,30)<<endl;
 
