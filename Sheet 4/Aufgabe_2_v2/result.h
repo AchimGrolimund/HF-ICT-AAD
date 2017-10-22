@@ -10,6 +10,7 @@ class Result
 		int nNegative;
 		Result();
 
+		//<-- Overload Operator<< -->
 		friend std::ostream & operator<<(std::ostream & stream, const Result & obj)
 		{
 			int inputSize(0);

@@ -27,7 +27,7 @@
  *
  *==============================================[ EOF RDM ]=============================================================================*/
 
-#define DEBUG
+//#define DEBUG
 #include <bits/stdc++.h> //Alle benötigten Includes
 
 #include "result.h"
