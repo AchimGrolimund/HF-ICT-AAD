@@ -1,10 +1,8 @@
-#include <iostream>
-
 #include "myfunks.h"
-#define DEBUG
 #include "C:\Users\achim\Documents\Programming\C++\HF-ICT-AAD\myFunks\myFunks\debug.h"
+#include <bits/stdc++.h> //Alle benötigten Includes
 
-
+#define DEBUG
 using namespace std;
 
 
@@ -12,17 +10,16 @@ int main()
 {
 	unsigned int arraySize(5);
 
-	int abc[arraySize];
+	int myArr[arraySize];
 	vector<int> myVec;
 	cout<<"arraySize: "<<arraySize<<endl;
-	debug_msg("bluub");
-	myFunks::myArray::fillRandom(abc,arraySize,50,-50);
-	myFunks::myVector<int>::fillRandom_back(myVec,arraySize,20,-20);
+	myArray::fillRandom(myArr,arraySize,20,10);
+	myVector<int>::fillRandom_back(myVec,arraySize,20,-20);
 
-	auto start = myFunks::myTime::start();
-	for(unsigned int i(0); i < arraySize; i++){
-		cout<<myVec[i]<<endl;
+	auto start = myTime::start();
+	for(auto i : myArr){
+		cout<<i<<endl;
 	}
-	myFunks::myTime::stop(start);
+	myTime::stop(start);
 
 }
