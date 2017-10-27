@@ -40,12 +40,16 @@ using namespace std;
 
 int main()
 {
-
 	srand(static_cast<unsigned int>(time(NULL)));
 	vector<int> myVec{1, 10, 0, -6, -9, 2, 5};
 
+	vector<int> myVec2;
+	for(unsigned int i(0); i<100000000;i++){
+		myVec2.push_back(rand()%200-100);
+	}
+
 	auto start = myTime::start();
-	Result result = ArrayUtil::analyseArray(myVec);
+	Result result = ArrayUtil::analyseArray(move(myVec2));
 	cout.precision(3);
 	cout<< result;
 	myTime::stop(start);

@@ -10,7 +10,6 @@
 using namespace std;
 using namespace std::chrono;
 
-
 	class myArray{
 		public:
 			template<class T>

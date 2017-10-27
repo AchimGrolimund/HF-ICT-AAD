@@ -27,12 +27,7 @@
  *
  *==============================================[ EOF RDM ]=============================================================================*/
 
-#include <iostream>
-#include <ctime>
-#include <chrono>
-#include <random>
-
-#include <vector>
+#include <bits/stdc++.h> //Alle benötigten Includes
 
 #include "debug.h"
 #include "result.h"
