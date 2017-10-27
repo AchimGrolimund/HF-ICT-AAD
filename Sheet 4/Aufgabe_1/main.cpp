@@ -28,6 +28,10 @@
  *==============================================[ EOF RDM ]=============================================================================*/
 
 #include <bits/stdc++.h> //Alle benötigten Includes
+#include "C:/Users/achim/Documents/Programming/C++/HF-ICT-AAD/myFunks/myFunks/myfunks.h"
+#include "C:/Users/achim/Documents/Programming/C++/HF-ICT-AAD/myFunks/myFunks/debug.h"
+
+//#define DEBUG
 
 #include "stringutil.h"
 
@@ -36,16 +40,18 @@ using namespace std::chrono;
 
 int main()
 {
+	string input, input2;
+	input2 = "aabbccddzf";
+	for (unsigned int i(0); i < 100000000; ++i) {
+		input.push_back('a'+rand()%24);
+	}
+	input.push_back('z'); //First single Char
+	input.push_back('y'); //Second single Char
 
-
-	auto start = high_resolution_clock::now();
-	cout<<StringUtil::getLonelyElement("aabbccddzf")<<endl;
-	auto ende  = high_resolution_clock::now();
-
-	//<-- Asgabe der Zeitmessung -->
-	cout << endl << "Zeit: " << std::chrono::duration_cast<nanoseconds>(ende-start).count() << " ns"<<endl;
-	cout << endl << "Zeit: " << std::chrono::duration_cast<milliseconds>(ende-start).count() << " ms"<<endl;
-	cout << endl << "Zeit: " << std::chrono::duration_cast<seconds>(ende-start).count() << " s"<<endl;
+	auto start = myTime::start();
+	cout<<StringUtil::getLonelyElement2(move(input2))<<endl;
+	//cout<<StringUtil::getLonelyElement2(move(input))<<endl;
+	myTime::stop(start);
 
 	return 0;
 }
