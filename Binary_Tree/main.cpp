@@ -26,47 +26,48 @@
 using namespace std;
 
 class Node {
-public:
-  Node * left;
-  Node * right;
-  int value;
-  Node(int value);
+	public:
+		Node * left;
+		Node * right;
+		int value;
+		Node(int value);
 };
 
 Node::Node(int value) : left(0), right(0), value(value) {
 }
 
 class BinaryTree {
-private:
-  Node * root;
-  void insert(int v, Node * n);
-  void postOrder(Node * n);
-public:
-  BinaryTree();
-  void insert(int v);
-  int height(Node *n, int &ch, int &max);
-  void postOrder();
+	private:
+		Node * root;
+		void insert(int v, Node * n);
+		void postOrder(Node * n);
+		int height(Node * last);
+	public:
+		BinaryTree();
+		void insert(int v);
+		int height();
+		void postOrder();
 };
 
 BinaryTree::BinaryTree() : root(0) {
 }
 
 void BinaryTree::insert(int v, Node * n) {
-  if (v < n->value) {
-	// left
-	if (n->left == 0) {
-	  n->left = new Node(v);
+	if (v < n->value) {
+		// left
+		if (n->left == 0) {
+			n->left = new Node(v);
+		} else {
+			insert(v, n->left);
+		}
 	} else {
-	  insert(v, n->left);
+		// right
+		if (n->right == 0) {
+			n->right = new Node(v);
+		} else {
+			insert(v, n->right);
+		}
 	}
-  } else {
-	// right
-	if (n->right == 0) {
-	  n->right = new Node(v);
-	} else {
-	  insert(v, n->right);
-	}
-  }
 }
 
 void BinaryTree::postOrder(Node *n)
@@ -83,31 +84,52 @@ void BinaryTree::postOrder()
 }
 
 void BinaryTree::insert(int v) {
-  if (root == 0) {
-	root = new Node(v);
-  } else {
-	insert(v, root);
-  }
+	if (root == 0) {
+		root = new Node(v);
+	} else {
+		insert(v, root);
+	}
 }
 
-int BinaryTree::height(Node *n, int &ch, int &max)
-{
-	return 0;
-}
+int BinaryTree::height() {
+	if (root != 0) {
+		return height(root);
+	} else {
+		return 0;
+	}
 
+};
+
+int BinaryTree::height(Node *last) {
+	int l = 1;
+	int r = 1;
+	if (last->left != 0) {
+		l = height(last->left) + 1;
+	}
+	if (last->right != 0) {
+		r = height(last->right) + 1;
+	}
+	if (l >= r) {
+		return l;
+	} else {
+		return r;
+	}
+};
 
 
 
 
 int main() {
-  BinaryTree bt;
-  int values[] = {50, 25, 75, 14, 7, 19, 63, 89, 99, 79};
-  for (int &x : values) {
-	bt.insert(x);
-  }
+	BinaryTree bt;
+	int values[] = {50, 25, 75, 14, 7, 19, 63, 89, 99, 79, 100};
+	for (int &x : values) {
+		bt.insert(x);
+	}
 
-bt.postOrder();
-  return 0;
+	cout<<bt.height()<<endl;
+
+
+	return 0;
 }
 
 
