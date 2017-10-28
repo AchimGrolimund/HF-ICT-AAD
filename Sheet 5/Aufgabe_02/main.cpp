@@ -25,6 +25,16 @@
 
 using namespace std;
 
+class TreeUtil{
+	public:
+		static bool isBinarySearchTree(vector<int> values);
+};
+
+bool TreeUtil::isBinarySearchTree(vector<int> values)
+{
+	return true;
+}
+
 class Node {
 	public:
 		Node * left;
@@ -151,13 +161,15 @@ int BinaryTree::height(Node *last) {
 
 int main() {
 	BinaryTree bt;
-	int values[] = {50, 25, 75, 14, 7, 19, 63, 89, 99, 79, 100};
+	int values[] = {20, 12, 34, 9, 19, 29};
 	for (int &x : values) {
 		bt.insert(x);
 	}
 
-	bt.preOrder();
+	bt.inOrder();
 
 
 	return 0;
 }
+
+
