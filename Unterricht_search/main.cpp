@@ -49,7 +49,7 @@ int search(vector<int> & data, int element) {
   return result;
 }
 
-int main(int argc, char **argv) {
+int main() {
 
   const int N = 100;
   vector<int> v;
