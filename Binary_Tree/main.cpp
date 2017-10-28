@@ -1,23 +1,4 @@
-/*===================================[ Algorithmen und Datenstrukturen]================================================================*
- *
-
- *
- * @Version:		1.0.0
- * @Author:			Achim Grolimund (achim.grolimund@hf-ict.info)
- * @Date:			01.1.2017
- *
- * @Description:
-
- *
- * Beispiel:
-
- *
- * Anmerkung:
- *
- *
- *==============================================[ EOF RDM ]=============================================================================*/
-
-#define DEBUG
+//#define DEBUG
 #include <bits/stdc++.h>
 
 #include "C:/Users/achim/Documents/Programming/C++/HF-ICT-AAD/myFunks/myFunks/myfunks.h"
@@ -39,14 +20,18 @@ Node::Node(int value) : left(0), right(0), value(value) {
 class BinaryTree {
 	private:
 		Node * root;
-		void insert(int v, Node * n);
-		void postOrder(Node * n);
-		int height(Node * last);
+		void insert(int v, Node *n);
+		void postOrder(Node *n);
+		void inOrder(Node *n);
+		void preOrder(Node *n);
+		int height(Node *last);
 	public:
 		BinaryTree();
 		void insert(int v);
 		int height();
 		void postOrder();
+		void inOrder();
+		void preOrder();
 };
 
 BinaryTree::BinaryTree() : root(0) {
@@ -78,9 +63,38 @@ void BinaryTree::postOrder(Node *n)
 		cout<< n->value<<endl;
 	}
 }
+
 void BinaryTree::postOrder()
 {
 	postOrder(root);
+}
+
+void BinaryTree::inOrder(Node *n)
+{
+	if(n != 0){
+		inOrder(n->left);
+		cout<< n->value<<endl;
+		inOrder(n->right);
+	}
+}
+
+void BinaryTree::inOrder()
+{
+	inOrder(root);
+}
+
+void BinaryTree::preOrder(Node *n)
+{
+	if(n != 0){
+		cout<< n->value<<endl;
+		preOrder(n->left);
+		preOrder(n->right);
+	}
+}
+
+void BinaryTree::preOrder()
+{
+	preOrder(root);
 }
 
 void BinaryTree::insert(int v) {
@@ -97,26 +111,23 @@ int BinaryTree::height() {
 	} else {
 		return 0;
 	}
-
 };
 
 int BinaryTree::height(Node *last) {
-	int l = 1;
-	int r = 1;
+	int left = 1;
+	int right = 1;
 	if (last->left != 0) {
-		l = height(last->left) + 1;
+		left = height(last->left) + 1;
 	}
 	if (last->right != 0) {
-		r = height(last->right) + 1;
+		right = height(last->right) + 1;
 	}
-	if (l >= r) {
-		return l;
+	if (left >= right) {
+		return left;
 	} else {
-		return r;
+		return right;
 	}
 };
-
-
 
 
 int main() {
@@ -126,33 +137,11 @@ int main() {
 		bt.insert(x);
 	}
 
-	cout<<bt.height()<<endl;
+	bt.preOrder();
 
 
 	return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
