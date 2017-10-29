@@ -25,15 +25,6 @@
 
 using namespace std;
 
-class TreeUtil{
-	public:
-		static bool isBinarySearchTree(vector<int> values);
-};
-
-bool TreeUtil::isBinarySearchTree(vector<int> values)
-{
-	return true;
-}
 
 class Node {
 	public:
@@ -54,6 +45,7 @@ class BinaryTree {
 		void inOrder(Node *n);
 		void preOrder(Node *n);
 		int height(Node *last);
+		bool isBinarySearchTree(Node * last);
 	public:
 		BinaryTree();
 		void insert(int v);
@@ -61,6 +53,7 @@ class BinaryTree {
 		void postOrder();
 		void inOrder();
 		void preOrder();
+		bool isBinarySearchTree();
 };
 
 BinaryTree::BinaryTree() : root(0) {
@@ -72,101 +65,131 @@ void BinaryTree::insert(int v, Node * n) {
 		if (n->left == 0) {
 			n->left = new Node(v);
 		} else {
-			insert(v, n->left);
+			insert(move(v), move(n->left));
 		}
 	} else {
 		// right
 		if (n->right == 0) {
 			n->right = new Node(v);
 		} else {
-			insert(v, n->right);
+			insert(move(v), move(n->right));
 		}
 	}
-}
-
-void BinaryTree::postOrder(Node *n)
-{
-	if(n != 0){
-		postOrder(n->left);
-		postOrder(n->right);
-		cout<< n->value<<endl;
-	}
-}
-
-void BinaryTree::postOrder()
-{
-	postOrder(root);
-}
-
-void BinaryTree::inOrder(Node *n)
-{
-	if(n != 0){
-		inOrder(n->left);
-		cout<< n->value<<endl;
-		inOrder(n->right);
-	}
-}
-
-void BinaryTree::inOrder()
-{
-	inOrder(root);
-}
-
-void BinaryTree::preOrder(Node *n)
-{
-	if(n != 0){
-		cout<< n->value<<endl;
-		preOrder(n->left);
-		preOrder(n->right);
-	}
-}
-
-void BinaryTree::preOrder()
-{
-	preOrder(root);
 }
 
 void BinaryTree::insert(int v) {
 	if (root == 0) {
 		root = new Node(v);
 	} else {
-		insert(v, root);
+		insert(move(v), move(root));
 	}
 }
 
-int BinaryTree::height() {
-	if (root != 0) {
-		return height(root);
-	} else {
-		return 0;
+void BinaryTree::postOrder(Node *n)
+{
+	if(n != 0){
+		postOrder(move(n->left));
+		postOrder(move(n->right));
+		cout<< n->value<<endl;
 	}
-};
+}
 
-int BinaryTree::height(Node *last) {
+void BinaryTree::postOrder()
+{
+	postOrder(move(root));
+}
+
+void BinaryTree::inOrder(Node *n)
+{
+	if(n != 0){
+		inOrder(move(n->left));
+		cout<< n->value<<endl;
+		inOrder(move(n->right));
+	}
+}
+
+void BinaryTree::inOrder()
+{
+	inOrder(move(root));
+}
+
+void BinaryTree::preOrder(Node *n)
+{
+	if(n != 0){
+		cout<< n->value<<endl;
+		preOrder(move(n->left));
+		preOrder(move(n->right));
+	}
+}
+
+void BinaryTree::preOrder()
+{
+	preOrder(move(root));
+}
+
+
+
+bool BinaryTree::isBinarySearchTree(Node *last)
+{
 	int left = 1;
 	int right = 1;
 	if (last->left != 0) {
-		left = height(last->left) + 1;
+		left = isBinarySearchTree(move(last->left)) + 1;
 	}
 	if (last->right != 0) {
-		right = height(last->right) + 1;
+		right = isBinarySearchTree(move(last->right)) + 1;
 	}
-	if (left >= right) {
-		return left;
+	if (left > right || left < right) {
+		return false;
 	} else {
-		return right;
+		return true;
 	}
+}
+
+bool BinaryTree::isBinarySearchTree()
+{
+	if(root != 0){
+		return isBinarySearchTree(move(root));
+	}else{
+		return 0;
+	}
+}
+
+
+
+class TreeUtil{
+	public:
+		static bool isBinarySearchTree(vector<int> values);
 };
 
 
-int main() {
+bool TreeUtil::isBinarySearchTree(vector<int> values)
+{
 	BinaryTree bt;
-	int values[] = {20, 12, 34, 9, 19, 29};
-	for (int &x : values) {
-		bt.insert(x);
+	for(const auto & x : values){
+		bt.insert(move(x));
 	}
 
-	bt.inOrder();
+	return bt.isBinarySearchTree();
+
+}
+
+
+int main() {
+	srand(static_cast<unsigned int>(time(NULL)));
+
+	vector<int> myVec{20,12,34};
+	vector<int> myVec2;
+
+	for (unsigned int i(0); i < 7; ++i) {
+		myVec2.push_back(rand()%10000);
+	}
+
+	TreeUtil tu;
+	auto start = myTime::start();
+	cout << tu.isBinarySearchTree(move(myVec2))<<endl;
+	myTime::stop(start);
+
 
 
 	return 0;
