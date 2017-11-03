@@ -33,7 +33,7 @@ int calculate(string input){
 
 	transform(input.begin(),input.end(),input.begin(), ::tolower);
 
-	for(const auto &i : input){
+	for(auto&& i : input){
 		if(i != ' '){
 			asciiBuchstabe[static_cast<unsigned int>(i-'a')] += 1;
 		}
@@ -41,7 +41,7 @@ int calculate(string input){
 
 	sort(asciiBuchstabe.begin(),asciiBuchstabe.end(), std::greater<int>());
 
-	for(const auto &j : asciiBuchstabe){
+	for(auto&& j : asciiBuchstabe){
 		if(j > 0 && multiplikator > 0){
 			zaehler+= (j*multiplikator);
 			multiplikator--;
@@ -62,16 +62,16 @@ int main()
 	}
 
 
-	string myString = "abcdefghijklmnopqrstuvwxyz";
+	string myString = "aabcdefg hijklmnopqrstuvwxyz";
 
 	auto start = myTime::start();
 	cout << "Ausgabe ohne move:\n";
-	cout << "Die schoenheit deiner Zeichenkette ist: "<<calculate(myString2)<<endl;
+	cout << "Die schoenheit deiner Zeichenkette ist: "<<calculate(myString)<<endl;
 	myTime::stop(start);
 	cout << "---------------------------------\n";
 	start = myTime::start();
 	cout << "Ausgabe mit move:\n";
-	cout<<"Die schoenheit deiner Zeichenkette ist: "<<calculate(move(myString2))<<endl;
+	cout<<"Die schoenheit deiner Zeichenkette ist: "<<calculate(move(myString))<<endl;
 	myTime::stop(start);
 
 	return 0;
