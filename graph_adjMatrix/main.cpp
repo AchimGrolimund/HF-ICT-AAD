@@ -27,7 +27,7 @@ using namespace std;
 
 
 
-void parseGraph(vector<int> adjMatrix[] graph, bool[] visited, int curendNode){
+void parseGraph(vector<int> *adjMatrix , bool* visited, int curendNode){
 
 }
 
