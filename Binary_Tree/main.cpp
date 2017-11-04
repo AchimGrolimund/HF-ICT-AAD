@@ -27,6 +27,7 @@ class BinaryTree {
 		int height(Node *last);
 		int sum(Node *n);
 		void printLeaves(Node *n, vector<int> pfad);
+		void getUncestor(int value, Node *n);
 	public:
 		BinaryTree();
 		void insert(int v);
@@ -36,6 +37,7 @@ class BinaryTree {
 		void preOrder();
 		int sum();
 		void printLeaves();
+		void getUncestor(int value);
 };
 
 BinaryTree::BinaryTree() : root(0) {
@@ -175,6 +177,26 @@ void BinaryTree::printLeaves(){
 	printLeaves(root, pfad);
 }
 
+void BinaryTree::getUncestor( int value, Node *n){
+
+	if(n->value == 0) return;
+
+	if((n->left != 0 && value == n->left->value) || (n->right != 0 && value == n->right->value)){
+		cout<<n->value<<endl;
+		return;
+	}else{
+		getUncestor(value,n->left);
+		getUncestor(value,n->right);
+	}
+
+}
+
+
+
+void BinaryTree::getUncestor(int value){
+	getUncestor(value, root);
+}
+
 
 int main() {
 	BinaryTree bt;
@@ -186,7 +208,7 @@ int main() {
 	}
 
 
-	bt.printLeaves();
+	bt.getUncestor(55);
 
 	return 0;
 }
