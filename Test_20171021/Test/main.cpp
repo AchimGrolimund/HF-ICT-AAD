@@ -29,11 +29,48 @@ bool isBalanced(string);
 int longestChar(string);
 bool wordGame(string, string);
 
+void wordGameTest() {
+  cout << wordGame("heute ist ein schoener tag", "heute tag") << endl;
+  cout << wordGame("heute ist ein schoener tag", "heute tag tag") << endl;
+  cout << wordGame("das ist ein", "hallo welt") << endl;
+  cout << wordGame("hallo welt", "welt hallo") << endl;
+  cout << wordGame("hallo   welt", "welt hallo") << endl;
+  cout << wordGame(" hallo welt ", "welt hallo") << endl;
+  cout << wordGame(" hallo weltx ", "welt hallo") << endl;
+}
+
+void isBalancedTest() {
+  cout << isBalanced("(){[(aa)bb]rr}") << endl;
+  cout << isBalanced("(asb[sd]23{)}") << endl;
+  cout << isBalanced(")()(") << endl;
+  cout << isBalanced("((([[[]]]{{{}}})))") << endl;
+  cout << isBalanced("abc(]efg") << endl;
+  cout << isBalanced("abc{}efg") << endl;
+  cout << isBalanced("mb(x){y}[z]bm") << endl;
+  cout << isBalanced("mb(x){y}[z)bm") << endl;
+  cout << isBalanced("mb(x){y}[z]bm}") << endl;
+}
+
+void longestCharTest() {
+  cout << longestChar("avvgfbbbbedd") << endl;
+  cout << longestChar("aaabbbcccddd") << endl;
+  cout << longestChar("") << endl;
+  cout << longestChar("abc") << endl;
+  cout << longestChar("abbc") << endl;
+  cout << longestChar("abcdddeff") << endl;
+}
+
 int main()
 {
+  //wordGameTest();
+  isBalancedTest();
+  //longestCharTest();
+
+  /*
 	cout <<"isBalanced = "<<isBalanced("(){[(aa)bb]rr}")<<endl; // gans schlecht && unvolständig
 	cout <<"longestChar = "<<longestChar("aaaaaabbcdxxxxxeee")<<endl; // geht
 	cout <<"wordGame = "<< wordGame("heute ist ein schoener tag","heute tag")<<endl; // geht
+  */
 	return 0;
 }
 

@@ -25,6 +25,8 @@ class BinaryTree {
 		void inOrder(Node *n);
 		void preOrder(Node *n);
 		int height(Node *last);
+		int sum(Node *n);
+		void printLeaves(Node *n, vector<int> pfad);
 	public:
 		BinaryTree();
 		void insert(int v);
@@ -32,6 +34,8 @@ class BinaryTree {
 		void postOrder();
 		void inOrder();
 		void preOrder();
+		int sum();
+		void printLeaves();
 };
 
 BinaryTree::BinaryTree() : root(0) {
@@ -129,19 +133,67 @@ int BinaryTree::height(Node *last) {
 	}
 };
 
+int BinaryTree::sum(Node *n){
+
+	if(n == 0) return  0;
+	int v = n->value;
+	return sum(n->left) + v + sum(n->right);
+}
+int BinaryTree::sum(){
+
+	return sum(root);
+}
+
+void BinaryTree::printLeaves(Node *n, vector<int> pfad){
+	if(n == 0) return;
+
+	if(n->left != 0){
+		pfad.push_back(n->value);
+		printLeaves(n->left, pfad);
+		pfad.pop_back();
+	}else{
+		cout<<n->value<<" -- ";
+		for(const auto &x : pfad) cout<<x<<" - ";
+		cout<<n->value<<endl;
+		return;
+	}
+
+	if(n->right != 0){
+		pfad.push_back(n->value);
+		printLeaves(n->right, pfad);
+		pfad.pop_back();
+	}else{
+		cout<<n->value<<" -- ";
+		for(const auto &y : pfad) cout<<y<<" - ";
+		cout<<n->value<<endl;
+		return;
+	}
+}
+
+void BinaryTree::printLeaves(){
+	vector<int> pfad;
+	printLeaves(root, pfad);
+}
+
 
 int main() {
 	BinaryTree bt;
-	int values[] = {50, 25, 75, 14, 7, 19, 63, 89, 99, 79, 100};
+	int values[] = {30,20,50,2,29,47,55};
+	int sum(0);
 	for (int &x : values) {
 		bt.insert(x);
+		sum += values[1];
 	}
 
-	bt.preOrder();
 
+	bt.printLeaves();
 
 	return 0;
 }
+
+
+
+
 
 
 
