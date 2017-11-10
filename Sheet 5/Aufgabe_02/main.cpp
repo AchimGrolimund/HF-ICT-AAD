@@ -50,15 +50,16 @@ bool TreeUtil::upperValues(vector<int> &values,unsigned int i, int value) {
 }
 
 bool TreeUtil::isBinarySearchTree(vector<int> values) {
+
 	for (unsigned int i = 1; i < values.size(); i++) {
 		if (!upperValues(values, i, values[i])) return false;
 	}
 
 	return true;
-};
+}
 
 int main() {
-	vector<int> values = {20, 12, 34, 9, 19, 21, 35, 8, 13};
+	vector<int> values = {20, 12, 34, 9, 19, 21, 35, 8, 13,2};
 	auto start = myTime::start();
 	cout << (TreeUtil::isBinarySearchTree(values) ? "SearchTree" : "No SearchTree") << endl;
 	myTime::stop(start);
