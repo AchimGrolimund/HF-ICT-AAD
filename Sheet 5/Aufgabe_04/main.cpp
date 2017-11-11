@@ -31,9 +31,11 @@ int calculate(string input){
 	vector<int> asciiBuchstabe(26);
 	int zaehler(0), multiplikator(26);
 
-	transform(input.begin(),input.end(),input.begin(), ::tolower);
-	for_each(input.begin(),input.end(),[&asciiBuchstabe](char i){if((i >= 'a')&&(i <= 'z')) asciiBuchstabe[static_cast<unsigned int>(i-'a')] += 1;});
-	sort(asciiBuchstabe.begin(),asciiBuchstabe.end(), std::greater<int>());
+	//transform(input.begin(),input.end(),input.begin(), ::tolower);
+	for_each(input.begin(),input.end(),[&asciiBuchstabe](char i){
+		if((i >= 'a')&&(i <= 'z')) {asciiBuchstabe[static_cast<unsigned int>(i-'a')] += 1;}
+		else if((i>='A')&&(i<='Z')) asciiBuchstabe[static_cast<unsigned int>(i-'A')] += 1;});
+	sort(asciiBuchstabe.rbegin(),asciiBuchstabe.rend());
 	for_each(asciiBuchstabe.begin(), asciiBuchstabe.end(), [&zaehler, &multiplikator](int v){zaehler += (v*multiplikator);multiplikator--;});
 	return zaehler;
 }
