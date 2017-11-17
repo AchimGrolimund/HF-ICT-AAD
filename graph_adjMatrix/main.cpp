@@ -43,7 +43,8 @@ vector<int>* SampleGraph::create(int numberOfNodes, int numberOfConnections, boo
 		if (source != target) {
 			if (find(result[source].begin(), result[source].end(), target) == result[source].end()) {
 				result[source].push_back(target);
-				if(!isDirected) result[target].push_back(source);
+				if(!isDirected)
+					result[target].push_back(source);
 				counter++;
 			}
 		}
@@ -51,6 +52,7 @@ vector<int>* SampleGraph::create(int numberOfNodes, int numberOfConnections, boo
 	for (int i=0; i<numberOfNodes; i++) {
 		sort(result[i].begin(), result[i].end());
 	}
+
 
 	return result;
 }
@@ -67,6 +69,7 @@ void SampleGraph::print(vector<int>* graph, int numberOfNodes) {
 	}
 }
 
+
 //<-- Tiefensuche  -->
 void dfs(vector<int>* graph, int numberOfNodes, bool *visited, int currentNode) {
 
@@ -78,8 +81,6 @@ void dfs(vector<int>* graph, int numberOfNodes, bool *visited, int currentNode) 
 			dfs(graph,numberOfNodes,visited,node);
 		}
 	}
-
-
 }
 
 
@@ -92,13 +93,54 @@ void dfs(vector<int>* graph, int numberOfNodes) {
 
 
 //<-- Breitensuche alle Nachbarn suchen -->
+void bfs(vector<int>* graph, int numberOfNodes, bool *visited, int &currentNode) {
+	if(currentNode >= numberOfNodes)return;
+
+	if(!visited[currentNode]){
+		cout << currentNode << " , ";
+		visited[currentNode] = true;
+	}
+
+
+	for(const auto &node : graph[currentNode]){
+		if(!visited[node]){
+			visited[node] = true;
+			cout << node<< " , ";
+		}
+	}
+	currentNode++;
+	bfs(graph,numberOfNodes,visited,currentNode);
+}
+
 void bfs(vector<int>* graph, int numberOfNodes) {
+	int counter(0);
+
+	bool *visited = new bool[numberOfNodes]{false};
+
+	bfs(graph,numberOfNodes,visited,counter);
 
 }
 
-//<--  -->
+
+//<-- Rek Connected -->
+void connected(vector<int>* graph,int numberOfNodes, bool *visited, int &currentNode, vector<int> *conVec){
+	visited[currentNode] = true;
+	conVec->push_back(currentNode);
+
+	for(auto &node : graph[currentNode]){
+		if(!visited[node]){
+			connected(graph,numberOfNodes,visited,node,conVec);
+		}
+	}
+}
+
 bool connected(vector<int>* graph, int numberOfNodes, int nodeA, int nodeB) {
 
+	vector<int> conVec;
+	bool *visited = new bool[numberOfNodes]{false};
+	connected(graph,numberOfNodes,visited,nodeA, &conVec);
+
+	return find(conVec.begin(), conVec.end(), nodeB) != conVec.end();
 }
 
 
@@ -108,12 +150,11 @@ int main() {
 	const int NUMBER_OF_NODES = 7;
 	const int NUMBER_OF_CONNECTIONS = 12;
 
-	vector<int>* graph = SampleGraph::create(NUMBER_OF_NODES, NUMBER_OF_CONNECTIONS);
+	vector<int>* graph = SampleGraph::create(NUMBER_OF_NODES, NUMBER_OF_CONNECTIONS,true);
 
-	SampleGraph::print(
-				SampleGraph::create(NUMBER_OF_NODES, NUMBER_OF_CONNECTIONS), NUMBER_OF_NODES);
-
-	dfs(graph,NUMBER_OF_NODES);
+	SampleGraph::print(graph, NUMBER_OF_NODES);
+	//dfs(graph,NUMBER_OF_NODES);
+	cout<<connected(graph,NUMBER_OF_NODES,0,1)<<"\n";
 
 	return 0;
 }
