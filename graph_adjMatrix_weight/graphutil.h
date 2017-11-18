@@ -6,17 +6,18 @@ using namespace std;
 
 class Graph;
 
-class DijkstraEntry {
-public:
-  int node;
-  int distance;
-  bool marked;
-  int predecessor;
+struct Entry {
+		unsigned int nodeId;
+		int distance;
+		bool marked;
+		int predecessor;
 };
 
 class GraphUtil {
-public:
-  static vector<DijkstraEntry> dijkstra(Graph *g, int start);
+	public:
+		static vector<Entry> dijkstra(Graph *g, int start);
+	private:
+		static int getNextNode(vector<Entry> &data);
 
 };
 
