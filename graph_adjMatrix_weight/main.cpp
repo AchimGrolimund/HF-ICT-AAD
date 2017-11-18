@@ -1,32 +1,14 @@
-/*===================================[ Algorithmen und Datenstrukturen]================================================================*
- *
+#include "graph.h"
 
- *
- * @Version:		1.0.0
- * @Author:			Achim Grolimund (achim.grolimund@hf-ict.info)
- * @Date:			01.1.2017
- *
- * @Description:
-
- *
- * Beispiel:
-
- *
- * Anmerkung:
- *
- *
- *==============================================[ EOF RDM ]=============================================================================*/
-
-#define DEBUG
-#include <bits/stdc++.h>
-
-#include "C:/Users/achim/Documents/Programming/C++/HF-ICT-AAD/myFunks/myFunks/myfunks.h"
-#include "C:/Users/achim/Documents/Programming/C++/HF-ICT-AAD/myFunks/myFunks/debug.h"
-
+#include <iostream>
+#include <cstdlib>
 using namespace std;
 
-int main()
-{
+int main(int argc, char **argv) {
+  
+  Graph g;
+  g.randomInit(20, 32);
+  cout << g << endl;
 
-	return 0;
+  return 0;
 }
