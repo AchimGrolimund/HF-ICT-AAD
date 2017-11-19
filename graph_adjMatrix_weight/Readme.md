@@ -1,6 +1,10 @@
 # Dijkstra Path finding bei einem Graph
 
  * [1.0 Benötigte Klassen](#1.0-Benötigte-Klassen)
+   * [1.0.1 Class Graph](#1.0.1-Class-Graph)
+     * [Variablen](#Variablen)
+       * [Private](#Private)
+     * [Public Methoden](#Public-Methoden)
 
 ## 1.0 Benötigte Klassen
 
