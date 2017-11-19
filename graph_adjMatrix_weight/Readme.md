@@ -120,4 +120,4 @@ cout << Graph << endl;
 
 die Anzeige sieht dan wie folgt aus:
 
-![](/Readme/coutGraph.png)
+![](Readme/coutGraph.png)
