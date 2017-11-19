@@ -1,24 +1,14 @@
 # Dijkstra Path finding bei einem Graph
 
- * [1.0 Benötigte Klassen](#1.0-Benötigte-Klassen)
-   * [1.0.1 Class Graph](#1.0.1-Class-Graph)
-     * [Variablen](#Variablen)
-       * [Private](#Private)
-     * [Public Methoden](#Public-Methoden)
-     * [Beschreibung](#Beschreibung)
-   * [1.0.2 Class GraphUtil](#1.0.2-Class-GraphUtil)
+[TOC]
 
-1.0 Benötigte Klassen
-=====================
+## 1.0 Benötigte Klassen
 
-1.0.1 Class Graph
-=================
+### 1.0.1 Class Graph
 
-Variablen
----------
+#### Variablen
 
-Private
--------
+##### Private
 
 ````cpp
 vector<vector<int>> neighbours;
@@ -70,7 +60,7 @@ bool marked;
 int predecessor;
 ```
 
-####Beschreibung
+#### Beschreibung
 
 
 
@@ -130,4 +120,4 @@ cout << Graph << endl;
 
 die Anzeige sieht dan wie folgt aus:
 
-![Cout von Graph](Readme/coutGraph.png)
+![](/Readme/coutGraph.png)
