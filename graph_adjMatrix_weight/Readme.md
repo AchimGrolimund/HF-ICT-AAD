@@ -8,13 +8,17 @@
      * [Beschreibung](#Beschreibung)
    * [1.0.2 Class GraphUtil](#1.0.2-Class-GraphUtil)
 
-## 1.0 Benötigte Klassen
+1.0 Benötigte Klassen
+=====================
 
-### 1.0.1 Class Graph
+1.0.1 Class Graph
+=================
 
-#### Variablen
+Variablen
+---------
 
-##### Private
+Private
+-------
 
 ````cpp
 vector<vector<int>> neighbours;
