@@ -5,12 +5,14 @@
      * [Variablen](#Variablen)
        * [Private](#Private)
      * [Public Methoden](#Public-Methoden)
+     * [Beschreibung](#Beschreibung)
+   * [1.0.2 Class GraphUtil](#1.0.2-Class-GraphUtil)
 
 ## 1.0 Benötigte Klassen
 
 ### 1.0.1 Class Graph
 
-####Variablen
+#### Variablen
 
 ##### Private
 
@@ -33,7 +35,7 @@ friend std::ostream& operator<<(std::ostream& s, const Graph & obj);
 
 
 
-####Beschreibung
+#### Beschreibung
 
 ### 1.0.2 Class GraphUtil
 
@@ -51,7 +53,7 @@ static int getNextNode(vector<Entry> &data);
 static void getPath(vector<int> *path, vector<Entry> *entryVector, int start, int end);
 ````
 
-####Beschreibung
+#### Beschreibung
 
 ### 1.0.3 Struct Entry
 
@@ -72,7 +74,7 @@ int predecessor;
 
 ### 2.1 graph.cpp
 
-####2.1.1 RandomInit
+#### 2.1.1 RandomInit
 
 > Hier wird der Graph mit den in main.cpp angegebenen anzahl Knoten und Verbindungen gefüllt. Die Gewichtung wird noch zufällig gewählt dazu später mehr.
 
@@ -80,7 +82,7 @@ int predecessor;
 
 
 
-####2.1.2 getNumberOfNodes
+#### 2.1.2 getNumberOfNodes
 
 ````cpp
 unsigned int Graph::getNumberOfNodes() {
