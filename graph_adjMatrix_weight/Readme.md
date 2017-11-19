@@ -1,12 +1,39 @@
-# Dijkstra Path finding bei einem Graph
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**  *generated with [DocToc](https://github.com/thlorenz/doctoc)*
 
-[TOC]
+- [Dijkstra Path finding bei einem Graph](#dijkstra-path-finding-bei-einem-graph)
+  - [1.0 Benötigte Klassen](#10-ben%C3%B6tigte-klassen)
+    - [1.0.1 Class Graph](#101-class-graph)
+      - [Variablen](#variablen)
+        - [Private](#private)
+      - [Public Methoden](#public-methoden)
+      - [Beschreibung](#beschreibung)
+    - [1.0.2 Class GraphUtil](#102-class-graphutil)
+      - [Public Methoden](#public-methoden-1)
+      - [Private Methoden](#private-methoden)
+      - [Beschreibung](#beschreibung-1)
+    - [1.0.3 Struct Entry](#103-struct-entry)
+      - [Variablen](#variablen-1)
+      - [Beschreibung](#beschreibung-2)
+  - [2.0 Vorgehen (.cpp)](#20-vorgehen-cpp)
+    - [2.1 graph.cpp](#21-graphcpp)
+      - [2.1.1 RandomInit](#211-randominit)
+      - [2.1.2 getNumberOfNodes](#212-getnumberofnodes)
+      - [2.1.3 getNeighbours(int node)](#213-getneighboursint-node)
+      - [2.1.4 ostream& operator<<(. . .)](#214-ostream-operator--)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+
+
+# Dijkstra Path finding bei einem Graph
 
 ## 1.0 Benötigte Klassen
 
 ### 1.0.1 Class Graph
 
-####Variablen
+#### Variablen
 
 ##### Private
 
@@ -29,7 +56,7 @@ friend std::ostream& operator<<(std::ostream& s, const Graph & obj);
 
 
 
-####Beschreibung
+#### Beschreibung
 
 ### 1.0.2 Class GraphUtil
 
@@ -47,7 +74,7 @@ static int getNextNode(vector<Entry> &data);
 static void getPath(vector<int> *path, vector<Entry> *entryVector, int start, int end);
 ````
 
-####Beschreibung
+#### Beschreibung
 
 ### 1.0.3 Struct Entry
 
@@ -60,7 +87,7 @@ bool marked;
 int predecessor;
 ```
 
-####Beschreibung
+#### Beschreibung
 
 
 
@@ -68,7 +95,7 @@ int predecessor;
 
 ### 2.1 graph.cpp
 
-####2.1.1 RandomInit
+#### 2.1.1 RandomInit
 
 > Hier wird der Graph mit den in main.cpp angegebenen anzahl Knoten und Verbindungen gefüllt. Die Gewichtung wird noch zufällig gewählt dazu später mehr.
 
@@ -76,7 +103,7 @@ int predecessor;
 
 
 
-####2.1.2 getNumberOfNodes
+#### 2.1.2 getNumberOfNodes
 
 ````cpp
 unsigned int Graph::getNumberOfNodes() {
@@ -120,4 +147,4 @@ cout << Graph << endl;
 
 die Anzeige sieht dan wie folgt aus:
 
-![](/Readme/coutGraph.png)
+![Cout from Graph](Readme/coutGraph.png)
