@@ -6,35 +6,10 @@
 
 using namespace std;
 
-/**
- * @brief operator <<
- * @param stream
- * @param obj
- * @return
- */
-std::ostream & operator<<(std::ostream & stream, const vector<Entry> & obj);
-
-
-int main(int argc, char **argv) {
-
-	Graph g;
-	GraphUtil gu;
-	vector<Entry> EntryTable;
-
-	g.randomInit(6, 10);
-	cout << g << endl;
-
-	EntryTable = gu.dijkstra(&g,0);
-
-	cout << EntryTable<<endl;
-
-	return 0;
-}
-
 
 //<-- überladung des << Operators -->
 /**
- * @brief operator <<
+ * @brief operator << for Dijkstra Vector<Entry>
  * @param stream
  * @param obj
  * @return
@@ -50,3 +25,43 @@ std::ostream & operator<<(std::ostream & stream, const vector<Entry> & obj)
 	}
 	return stream;
 }
+
+/**
+ * @brief operator << for gertPath Vector<int>
+ * @param stream
+ * @param obj
+ * @return
+ */
+std::ostream & operator<<(std::ostream & stream, const vector<int> & obj)
+{
+	stream << "===== Path =====\n";
+	for(auto x : obj){
+		stream << x << "\t -> \t";
+	}
+	return stream;
+}
+
+
+
+int main(int argc, char **argv) {
+
+	Graph g;
+	GraphUtil gu;
+
+	vector<Entry> EntryTable;
+	vector<int> path;
+
+	g.randomInit(5,8);
+	cout << g << endl;
+
+	EntryTable = gu.dijkstra(&g,0);
+
+	//path = gu.getPath(&g, 2345, 3988);
+
+	cout << path <<endl;
+
+	return 0;
+}
+
+
+

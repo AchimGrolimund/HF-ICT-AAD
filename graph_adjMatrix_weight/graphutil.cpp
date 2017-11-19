@@ -80,5 +80,41 @@ vector<Entry> GraphUtil::dijkstra(Graph *g, int start) {
 	return entryVector;
 }
 
+vector<int> GraphUtil::getPath(Graph *g, int start, int end)
+{
+	vector<Entry> entryVector;
+	vector<int> path;
+
+	entryVector = dijkstra(g, start);
+	getPath(&path, &entryVector, start, end);
+
+
+	return path;
+}
+
+
+void GraphUtil::getPath(vector<int> *path, vector<Entry> *entryVector, int start, int last){
+
+	if(entryVector->at(static_cast<unsigned>(last)).predecessor == -1){
+		path->push_back(-1); return;
+	}
+
+	path->push_back(last);
+
+	if(start == last) {
+		return;
+	}
+
+	getPath(path,entryVector,start,entryVector->at(static_cast<unsigned>(last)).predecessor);
+
+}
+
+
+
+
+
+
+
+
 
 

@@ -10,9 +10,9 @@ private:
   vector< vector<int> > neighbours;
   vector< vector<int> > weights;
 public:
+  unsigned int getNumberOfNodes();
   Graph();
   void randomInit(int nNodes=10, int nConnections=15, bool directed=false);
-  unsigned int getNumberOfNodes();
   vector<int> getNeighbours(int node);
   vector<int> getWeights(int node);
 
