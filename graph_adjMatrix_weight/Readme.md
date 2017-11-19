@@ -1,6 +1,6 @@
 # Dijkstra Path finding bei einem Graph
 
- *[1.0 Benötigte Klassen](#1.0 Benötigte Klassen)
+ * [1.0 Benötigte Klassen](#1.0 Benötigte Klassen)
 
 ## 1.0 Benötigte Klassen
 
