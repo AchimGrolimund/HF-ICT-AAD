@@ -11,6 +11,22 @@ using namespace std;
 Graph::Graph() {
 }
 
+/**
+ * @brief Graph::addNode
+ * @param neighbours
+ * @param weights
+ */
+void Graph::addNode(vector<int> neighbours, vector<int> weights) {
+  this->neighbours.push_back(neighbours);
+  this->weights.push_back(weights);
+}
+
+/**
+ * @brief Graph::randomInit
+ * @param nNodes
+ * @param nConnections
+ * @param directed
+ */
 void Graph::randomInit(int nNodes, int nConnections, bool directed) {
 	vector<int> v;
 
@@ -61,18 +77,38 @@ void Graph::randomInit(int nNodes, int nConnections, bool directed) {
 	}
 }
 
+/**
+ * @brief Graph::getNumberOfNodes
+ * @return
+ */
 unsigned int Graph::getNumberOfNodes() {
 	return neighbours.size();
 }
 
+/**
+ * @brief Graph::getNeighbours
+ * @param node
+ * @return
+ */
 vector<int> Graph::getNeighbours(int node) {
 	return neighbours.at(static_cast<unsigned>(node));
 }
 
+/**
+ * @brief Graph::getWeights
+ * @param node
+ * @return
+ */
 vector<int> Graph::getWeights(int node) {
 	return weights.at(static_cast<unsigned>(node));
 }
 
+/**
+ * @brief operator <<
+ * @param s
+ * @param obj
+ * @return
+ */
 std::ostream& operator<<(std::ostream& s, const Graph & obj) {
 	for (unsigned int i(0); i < obj.neighbours.size(); i++) {
 		vector<int>::iterator it;

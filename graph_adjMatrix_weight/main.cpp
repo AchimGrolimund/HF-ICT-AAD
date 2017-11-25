@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cstdlib>
 #include "graphutil.h"
+#include "graphgen.h"
 
 using namespace std;
 
@@ -43,7 +44,7 @@ std::ostream & operator<<(std::ostream & stream, const vector<int> & obj)
 
 
 
-int main(int argc, char **argv) {
+int main() {
 
 	Graph g;
 	GraphUtil gu;
@@ -51,17 +52,20 @@ int main(int argc, char **argv) {
 	vector<Entry> EntryTable;
 	vector<int> path;
 
-	g.randomInit(5,8);
-	cout << g << endl;
+	//g.randomInit(5,8);
+	//cout << g << endl;
 
-	EntryTable = gu.dijkstra(&g,0);
+	//EntryTable = gu.dijkstra(&g,0);
 
 	//path = gu.getPath(&g, 2345, 3988);
 
-	cout << path <<endl;
+	//cout << path <<endl;
+
+	cout << "1: " << GraphUtil::hasCycle(GraphGenerator::createGraph1()) << endl;
+	cout << "2: " << GraphUtil::hasCycle(GraphGenerator::createGraph2()) << endl;
+	cout << "3: " << GraphUtil::hasCycle(GraphGenerator::createGraph3()) << endl;
+	cout << "4: " << GraphUtil::hasCycle(GraphGenerator::createGraph4()) << endl;
+	cout << "5: " << GraphUtil::hasCycle(GraphGenerator::createGraph5()) << endl;
 
 	return 0;
 }
-
-
-

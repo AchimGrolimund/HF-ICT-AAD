@@ -5,8 +5,10 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     graph.cpp \
-    graphutil.cpp
+    graphutil.cpp \
+    graphgen.cpp
 
 HEADERS += \
     graph.h \
-    graphutil.h
+    graphutil.h \
+    graphgen.h

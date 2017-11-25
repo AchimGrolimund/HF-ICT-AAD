@@ -26,13 +26,22 @@
 
 using namespace std;
 
+/**
+ * @brief The SampleGraph class
+ */
 class SampleGraph {
 	public:
 		static vector<int>* create(int numberOfNodes, int numberOfConnections, bool isDirected);
 		static void print(vector<int>* graph, int numberOfNodes);
 };
 
-//<--  -->
+/**
+ * @brief SampleGraph::create
+ * @param numberOfNodes
+ * @param numberOfConnections
+ * @param isDirected
+ * @return
+ */
 vector<int>* SampleGraph::create(int numberOfNodes, int numberOfConnections, bool isDirected=false) {
 	vector<int>* result = new vector<int>[numberOfNodes];
 
@@ -57,7 +66,11 @@ vector<int>* SampleGraph::create(int numberOfNodes, int numberOfConnections, boo
 	return result;
 }
 
-//<--  -->
+/**
+ * @brief SampleGraph::print
+ * @param graph
+ * @param numberOfNodes
+ */
 void SampleGraph::print(vector<int>* graph, int numberOfNodes) {
 	for (int i=0; i<numberOfNodes; i++) {
 		vector<int>::iterator it;
@@ -70,7 +83,13 @@ void SampleGraph::print(vector<int>* graph, int numberOfNodes) {
 }
 
 
-//<-- Tiefensuche  -->
+/**
+ * @brief Tiefensuche Rekursiv
+ * @param graph
+ * @param numberOfNodes
+ * @param visited
+ * @param currentNode
+ */
 void dfs(vector<int>* graph, int numberOfNodes, bool *visited, int currentNode) {
 
 	visited[currentNode] = true;
@@ -83,7 +102,11 @@ void dfs(vector<int>* graph, int numberOfNodes, bool *visited, int currentNode) 
 	}
 }
 
-
+/**
+ * @brief Tiefensuche
+ * @param graph
+ * @param numberOfNodes
+ */
 void dfs(vector<int>* graph, int numberOfNodes) {
 	bool *visited = new bool[numberOfNodes]{false};
 
@@ -92,7 +115,13 @@ void dfs(vector<int>* graph, int numberOfNodes) {
 }
 
 
-//<-- Breitensuche alle Nachbarn suchen -->
+/**
+ * @brief bfs
+ * @param graph
+ * @param numberOfNodes
+ * @param visited
+ * @param currentNode
+ */
 void bfs(vector<int>* graph, int numberOfNodes, bool *visited, int &currentNode) {
 	if(currentNode >= numberOfNodes)return;
 
@@ -112,6 +141,11 @@ void bfs(vector<int>* graph, int numberOfNodes, bool *visited, int &currentNode)
 	bfs(graph,numberOfNodes,visited,currentNode);
 }
 
+/**
+ * @brief bfs
+ * @param graph
+ * @param numberOfNodes
+ */
 void bfs(vector<int>* graph, int numberOfNodes) {
 	int counter(0);
 
@@ -122,7 +156,14 @@ void bfs(vector<int>* graph, int numberOfNodes) {
 }
 
 
-//<-- Rek Connected -->
+/**
+ * @brief connected
+ * @param graph
+ * @param numberOfNodes
+ * @param visited
+ * @param currentNode
+ * @param conVec
+ */
 void connected(vector<int>* graph,int numberOfNodes, bool *visited, int &currentNode, vector<int> *conVec){
 	visited[currentNode] = true;
 	conVec->push_back(currentNode);
@@ -134,6 +175,14 @@ void connected(vector<int>* graph,int numberOfNodes, bool *visited, int &current
 	}
 }
 
+/**
+ * @brief connected
+ * @param graph
+ * @param numberOfNodes
+ * @param nodeA
+ * @param nodeB
+ * @return
+ */
 bool connected(vector<int>* graph, int numberOfNodes, int nodeA, int nodeB) {
 
 	vector<int> conVec;
@@ -142,6 +191,59 @@ bool connected(vector<int>* graph, int numberOfNodes, int nodeA, int nodeB) {
 
 	return find(conVec.begin(), conVec.end(), nodeB) != conVec.end();
 }
+
+
+
+
+/**
+ * @brief shortestReach
+ * @param graph
+ * @param numberOfNodes
+ * @param visited
+ * @param currentNode
+ * @param myPath
+ */
+void shortestReach(vector<int>* graph, int numberOfNodes, bool *visited, int currentNode,int targedNode, vector<vector<int>> *myPath) {
+	if(currentNode == targedNode) return;
+
+	visited[currentNode] = true;
+	//cout << currentNode << ",";
+
+	for(auto &node : graph[currentNode]){
+		if(!visited[node]){
+			myPath[currentNode][static_cast<unsigned>(node)].push_back(1);
+			shortestReach(graph, numberOfNodes, visited, currentNode, targedNode, myPath);
+		}
+	}
+}
+
+
+/**
+ * @brief shortestReach
+ * @param graph
+ * @param numberOfNodes
+ * @param start
+ * @param end
+ * @return
+ */
+int shortestReach(vector<int>* graph, int numberOfNodes, int start, int end){
+	if (start == end) return  0;
+	if ((start < 0 || start > numberOfNodes) || (end < 0 || end > numberOfNodes)) return 0;
+	vector<vector<int>> myPath;
+
+	bool *visited = new bool[numberOfNodes]{false};
+	shortestReach(graph, numberOfNodes, visited, start, end, &myPath);
+
+	for(auto x : myPath){
+		for(auto y : x){
+			cout << y << " , ";
+		}
+	}
+
+	return 0; // Probe
+
+}
+
 
 
 int main() {
@@ -154,7 +256,10 @@ int main() {
 
 	SampleGraph::print(graph, NUMBER_OF_NODES);
 	//dfs(graph,NUMBER_OF_NODES);
-	cout<<connected(graph,NUMBER_OF_NODES,0,1)<<"\n";
+	//cout<<connected(graph,NUMBER_OF_NODES,0,1)<<"\n";
+	//cout << shortestReach(graph,NUMBER_OF_NODES,3,2)<<"\n";
+
+
 
 	return 0;
 }

@@ -17,11 +17,15 @@ class GraphUtil {
 	public:
 		static vector<Entry> dijkstra(Graph *g, int start);
 		static vector<int> getPath(Graph *g, int start, int end);
+		static bool hasCycle(Graph *g);
+
 	private:
 		static int getNextNode(vector<Entry> &data);
 		static void getPath(vector<int> *path, vector<Entry> *entryVector, int start, int end);
-
+		static bool hasCycle(Graph *g, int node, vector<bool> & visited, vector<int> & path);
 };
+
+
 
 #endif
 
