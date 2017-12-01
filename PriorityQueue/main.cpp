@@ -31,6 +31,7 @@ int main() {
 	priorityQueue pq;
 	pq.insertRandom(50);
 	pq.printPriotityQueue();
+	cout << "height --> " << pq.getHeight() << "\n";
 	return 0;
 }
 

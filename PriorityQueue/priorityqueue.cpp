@@ -12,9 +12,8 @@ priorityQueue::priorityQueue() {
 }
 
 /**
- * @brief priorityQueue::insert
- * @param value
- *
+ * @brief Insert value to PriorityQueue
+ * @param int value
  */
 void priorityQueue::insert(int value) {
 	if (this->size == 0) {
@@ -47,7 +46,7 @@ void priorityQueue::printPriotityQueue() {
  */
 void priorityQueue::insertRandom(int maxValue) {
 	for (unsigned int i(0); i < PQ_SIZE; ++i) {
-		insert(std::rand() % maxValue);
+		insert(std::rand() % maxValue + 1);
 	}
 }
 
@@ -73,6 +72,25 @@ int priorityQueue::getSize() {
 }
 
 /**
+ * @brief priorityQueue::getHeight
+ * @return
+ */
+unsigned int priorityQueue::getHeight() {
+	unsigned int result(0);
+	if (this->size < 1) {
+		return 0;
+	}
+	for (int i(0); i < this->size - 1; ++i) {
+		if (i % 2 != 0) {
+			if (values[static_cast<unsigned>((i - 1) / 2)] > 0) {
+				result++;
+			}
+		}
+	}
+	return result;
+}
+
+/**
  * @brief priorityQueue::swabPrioQueue_rek
  * @param i
  *
@@ -87,18 +105,20 @@ void priorityQueue::swabPrioQueue_rek(int i) {
 	if (i % 2 == 0) { //Right element
 		if (values[static_cast<unsigned>(i)] < values[static_cast<unsigned>((
 					i - 2) / 2)]) {
-			tmp = values[static_cast<unsigned>(i)];
-			values[static_cast<unsigned>(i)] = values[static_cast<unsigned>((i - 2) / 2)];
-			values[static_cast<unsigned>((i - 2) / 2)] = tmp;
+			tmp = std::move(values[static_cast<unsigned>(i)]);
+			values[static_cast<unsigned>(i)] = std::move(values[static_cast<unsigned>((
+												   i - 2) / 2)]);
+			values[static_cast<unsigned>((i - 2) / 2)] = std::move(tmp);
 			tmp = 0;
 		}
 		i = (i - 2) / 2;
 	} else { //Left element
 		if (values[static_cast<unsigned>(i)] < values[static_cast<unsigned>((
 					i - 1) / 2)]) {
-			tmp = values[static_cast<unsigned>(i)];
-			values[static_cast<unsigned>(i)] = values[static_cast<unsigned>((i - 1) / 2)];
-			values[static_cast<unsigned>((i - 1) / 2)] = tmp;
+			tmp = std::move(values[static_cast<unsigned>(i)]);
+			values[static_cast<unsigned>(i)] = std::move(values[static_cast<unsigned>((
+												   i - 1) / 2)]);
+			values[static_cast<unsigned>((i - 1) / 2)] = std::move(tmp);
 			tmp = 0;
 		}
 		i = (i - 1) / 2;

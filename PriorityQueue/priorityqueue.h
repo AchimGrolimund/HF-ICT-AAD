@@ -3,7 +3,7 @@
 #include <array>
 
 //Array grösse
-#define PQ_SIZE 10
+#define PQ_SIZE 7
 
 
 class priorityQueue {
@@ -17,6 +17,7 @@ class priorityQueue {
 
 	int extractMin();
 	int getSize();
+	unsigned int getHeight();
 
   private:
 	int size;
@@ -30,3 +31,4 @@ class priorityQueue {
 };
 
 #endif // PRIORITYQUEUE_H
+S
