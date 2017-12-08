@@ -3,7 +3,7 @@
 #include <array>
 
 //Array grösse
-#define PQ_SIZE 7
+#define PQ_SIZE 10
 
 
 class priorityQueue {
@@ -24,11 +24,12 @@ class priorityQueue {
 
 	std::array<int, PQ_SIZE> values;
 
-	void swabPrioQueue();
-	void swabPrioQueue_rek(int i);
+	void swapPrioQueue(bool up);
+	void swapPrioQueueUp_rek(int i);
+	void swapPrioQueueDown_rek(int i);
 
 
 };
 
 #endif // PRIORITYQUEUE_H
-S
+

@@ -22,7 +22,7 @@ void priorityQueue::insert(int value) {
 	} else {
 		values[static_cast<unsigned>(size)] = value;
 		this->size++;
-		swabPrioQueue();
+		swapPrioQueue(false);
 	}
 }
 
@@ -59,7 +59,7 @@ int priorityQueue::extractMin() {
 	this->values[0] = this->values[static_cast<unsigned>(size - 1)];
 	this->values[static_cast<unsigned>(size - 1)] = -1;
 	this->size--;
-	swabPrioQueue();
+	swapPrioQueue(true);
 	return firstElement;
 }
 
@@ -97,7 +97,7 @@ unsigned int priorityQueue::getHeight() {
  * (i - 1) / 2 == Links   //Unsicher
  * (i - 2) / 2 == Rechts  //Unsicher
  */
-void priorityQueue::swabPrioQueue_rek(int i) {
+void priorityQueue::swapPrioQueueUp_rek(int i) {
 	int tmp(0);
 	if (i <= 0) {
 		return;
@@ -123,15 +123,56 @@ void priorityQueue::swabPrioQueue_rek(int i) {
 		}
 		i = (i - 1) / 2;
 	}
-	swabPrioQueue_rek(i);
+	swapPrioQueueUp_rek(i);
+}
+
+/**
+ * @brief priorityQueue::swapPrioQueueUp_rek
+ * @param i
+ * i*2+1
+ * i*2+2
+ */
+void priorityQueue::swapPrioQueueDown_rek(int i) {
+	int tmp(0);
+	if (i <= 0) {
+		return;
+	}
+	if (((i % 2 == 0)  && ((i * 2 + 2) < this->size - 1)) ||
+			(i * 2 + 1 < this->size - 1)) { //Right element
+		if (values[static_cast<unsigned>(i)] > values[static_cast<unsigned>
+				(i * 2 + 2)]) {
+			tmp = std::move(values[static_cast<unsigned>(i)]);
+			values[static_cast<unsigned>(i)] = std::move(values[static_cast<unsigned>
+											   (i * 2 + 2)]);
+			values[static_cast<unsigned>(i * 2 + 2)] = std::move(tmp);
+			tmp = 0;
+		}
+		i = i * 2 + 2;
+	} else { //Left element
+		if (values[static_cast<unsigned>(i)] < values[static_cast<unsigned>
+				(i * 2 + 1)]) {
+			tmp = std::move(values[static_cast<unsigned>(i)]);
+			values[static_cast<unsigned>(i)] = std::move(values[static_cast<unsigned>
+											   (i * 2 + 1)]);
+			values[static_cast<unsigned>(i * 2 + 1)] = std::move(tmp);
+			tmp = 0;
+		}
+		i = i * 2 + 1;
+	}
+	swapPrioQueueUp_rek(i);
 }
 
 /**
  * @brief priorityQueue::swabPrioQueue
  */
-void priorityQueue::swabPrioQueue() {
-	//swabPrioQueue_rek(this->size - 1);
-	for (int i = this->size - 1; i > 0; i--) {
-		swabPrioQueue_rek(i);
+void priorityQueue::swapPrioQueue(bool up) {
+	if (up) {
+		for (int i = this->size - 1; i > 0; i--) {
+			swapPrioQueueUp_rek(i);
+		}
+	} else {
+		for (int i = 1; i < this->size - 1; i++) {
+			swapPrioQueueDown_rek(i);
+		}
 	}
 }
